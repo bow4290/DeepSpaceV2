@@ -7,8 +7,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.hal.sim.EncoderSim;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -27,6 +30,8 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   public static DriveTrain driveTrain;
   public static ADXRS450_Gyro gyro;
+  public static Encoder encoderWrist;
+  public static Encoder encoderElbow;
 
 
   Command m_autonomousCommand;
@@ -43,6 +48,7 @@ public class Robot extends TimedRobot {
     gyro = new ADXRS450_Gyro();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    encoderElbow = new Encoder(1,1,false, EncodingType.k1X);
   }
 
   /**
