@@ -18,6 +18,7 @@ import edu.wpi.first.vision.VisionThread;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import frc.robot.Robot;
+// hi
 
 public class StartVisionCommand extends Command {
   private VisionThread gripPipeline;
