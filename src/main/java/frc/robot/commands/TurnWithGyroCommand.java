@@ -27,17 +27,18 @@ public class TurnWithGyroCommand extends Command {
   @Override
   protected void execute() {
     if (turnAngle>0.0){
-      Robot.driveTrain.turnRight();
+      //Robot.driveTrain.turnRight();
     }
     else{
-      Robot.driveTrain.turnLeft();
+      //Robot.driveTrain.turnLeft();
     }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Math.abs(Robot.gyro.getAngle())>=Math.abs(turnAngle);
+    return true;
+    //return Math.abs(Robot.gyro.getAngle())>=Math.abs(turnAngle);
   }
 
   // Called once after isFinished returns true

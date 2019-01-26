@@ -7,9 +7,13 @@
 
 package frc.robot;
 
+
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -18,20 +22,42 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
  * floating around.
  */
 public class RobotMap {
-  public static int leftMotorPid = 2;
-  public static int rightMotorPid = 3;
+  
+  public static DifferentialDrive driveTrainBase;
+  private static DoubleSolenoid gearShiftSolenoid;
 
-  private static Spark leftMotorSpark = new Spark(leftMotorPid);
-  private static Spark rightMotorSpark = new Spark(rightMotorPid);
+  private static SpeedController driveTrainMotorRightFront; 
+  private static SpeedController driveTrainMotorRightBack;
+  private static SpeedControllerGroup driveTrainRight;
 
-  public static DifferentialDrive driveTrain = new DifferentialDrive(leftMotorSpark, rightMotorSpark); //(leftMotorSpark, leftMotorSpark, rightMotorSpark, rightMotorSpark);
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
+  private static SpeedController driveTrainMotorLeftFront;
+  private static SpeedController driveTrainMotorLeftBack;
+  private static SpeedControllerGroup driveTrainLeft;
 
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
+  private static SpeedController elevator;
+  private static SpeedController elbow;
+  private static SpeedController wrist;
+  private static SpeedController finger;
+  
+  private static ADXRS450_Gyro turningGyro;
+
+  public static void init(){
+    driveTrainMotorRightFront = new Spark(0);
+    driveTrainMotorRightBack = new Spark(1);
+    driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
+
+    driveTrainMotorLeftFront = new Spark(2);
+    driveTrainMotorLeftBack = new Spark(3);
+    driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
+
+    gearShiftSolenoid = new DoubleSolenoid(0, 1);
+    driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
+
+    elevator = new Spark(4);
+    elbow = new Spark(5);
+    wrist = new Spark(6);
+    finger = new Spark(7);
+
+    turningGyro = new ADXRS450_Gyro();
+  }
 }

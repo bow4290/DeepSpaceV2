@@ -12,10 +12,8 @@ import frc.robot.Robot;
 
 public class DriveWithJoysticks extends Command {
   public DriveWithJoysticks() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.driveTrain);
-  } 
+  }
 
   // Called just before this Command runs the first time
   @Override
@@ -24,8 +22,8 @@ public class DriveWithJoysticks extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {    	
-    Robot.driveTrain.takeJoystickInputs(Robot.m_oi.m_leftStick);
+  protected void execute() {
+    Robot.driveTrain.takeJoystickInputs(Robot.oi.leftJoystick, Robot.oi.rightJoystick);
   }
 
   // Make this return true when this Command no longer needs to run execute()
