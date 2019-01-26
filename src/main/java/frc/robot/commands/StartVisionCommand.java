@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.opencv.core.MatOfPoint;
 
@@ -29,6 +30,7 @@ public class StartVisionCommand extends Command {
   private boolean isCentered = false;
   private double totalAverage = 0.0;
   private NetworkTable table = NetworkTable.getTable("tables");
+  private NetworkTable visionData = NetworkTable.getTable("visionData");
 
   // public DropGearWithCameraCommand() {
   // Use requires() here to declare subsystem dependencies
@@ -45,11 +47,13 @@ public class StartVisionCommand extends Command {
   protected void initialize() {
     isCentered = false;
     isFinished = false;
+    // visionData.clearPersistent("visionData");
 
     camera = CameraServer.getInstance().startAutomaticCapture();
     camera.setResolution(320, 240);
 
     gripPipeline = new VisionThread(camera, new GripPipeline(), pipeline -> {
+      
       ArrayList<MatOfPoint> blobPoints = pipeline.findContoursOutput();
       synchronized (imgLock) {
         double currentAverage = 0;
@@ -63,6 +67,8 @@ public class StartVisionCommand extends Command {
           currentAverage += averageX;
         }
         totalAverage = currentAverage / blobPoints.size();
+        visionData.putDouble("centerObject", totalAverage);
+        visionData.putValue("timestamp", new Date());
       }
       // table.putNumber("Total Average",totalAverage);
 
@@ -93,7 +99,7 @@ public class StartVisionCommand extends Command {
   protected void execute() { // double centerX;
     // double tapeDistance;
     synchronized (imgLock) {
-      totalAverage = this.totalAverage;
+      totalAverage = visionData.getDouble("centerObject", -1);
     }
 
     // double turn = centerX - (320.0 / 2) * -1; // BEFORE COMP REMOVE -1
@@ -104,9 +110,9 @@ public class StartVisionCommand extends Command {
 
     // BEFORE COMP ADD NEGATIVE BACK
     if (totalAverage < 145) {
-      // Robot.driveTrain.turnLeft();
+      Robot.driveTrain.turnLeft();
     } else if (totalAverage > 175) {
-      // Robot.driveTrain.turnRight();
+      Robot.driveTrain.turnRight();
       // isCentered = true;
     } else {
       isFinished = true;

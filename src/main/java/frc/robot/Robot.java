@@ -45,10 +45,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     driveTrain = new DriveTrain();
-    gyro = new ADXRS450_Gyro();
+    // gyro = new ADXRS450_Gyro();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    encoderElbow = new Encoder(1,1,false, EncodingType.k1X);
+    // encoderElbow = new Encoder(1,1,false, EncodingType.k1X);
   }
 
   /**
