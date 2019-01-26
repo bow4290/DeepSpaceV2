@@ -39,7 +39,7 @@ public class RobotMap {
   private static SpeedController wrist;
   private static SpeedController finger;
   
-  private static ADXRS450_Gyro turningGyro;
+  public static ADXRS450_Gyro turningGyro;
 
   public static void init(){
     driveTrainMotorRightFront = new Spark(0);
@@ -52,7 +52,7 @@ public class RobotMap {
 
     gearShiftSolenoid = new DoubleSolenoid(0, 1);
     driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
-
+    // driveTrainBase = new DifferentialDrive(driveTrainMotorLeftBack, driveTrainMotorRightFront);
     elevator = new Spark(4);
     elbow = new Spark(5);
     wrist = new Spark(6);

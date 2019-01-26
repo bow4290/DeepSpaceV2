@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
+// import sun.nio.ch.Net;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,13 +27,15 @@ import frc.robot.subsystems.DriveTrain;
 public class Robot extends TimedRobot {
   public static OI oi;
   public static DriveTrain driveTrain;
+  private NetworkTable nTable;
+
   
   @Override
   public void robotInit() {
     RobotMap.init();
     oi = new OI();
     driveTrain = new DriveTrain();
-
+    nTable = NetworkTable.getTable("gyroOut");
   }
 
   
@@ -46,6 +50,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
+    double gyroAngle = RobotMap.turningGyro.getAngle();
+    nTable.putNumber("Current Gyro Value", gyroAngle);
     //RobotMap.driveTrainBase.tankDrive(oi.leftJoystick.getY(), oi.rightJoystick.getY());   
   }
 

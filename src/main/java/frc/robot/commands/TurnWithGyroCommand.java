@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class TurnWithGyroCommand extends Command {
   private double turnAngle = 0.0;
@@ -21,23 +22,25 @@ public class TurnWithGyroCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    RobotMap.turningGyro.reset();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (turnAngle>0.0){
-      //Robot.driveTrain.turnRight();
-    }
-    else{
-      //Robot.driveTrain.turnLeft();
-    }
+    // if (turnAngle>0.0){
+    Robot.driveTrain.turnRight();
+    // }
+    // else{
+    //   Robot.driveTrain.turnLeft();
+    // }
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return RobotMap.turningGyro.getAngle() > this.turnAngle;
     //return Math.abs(Robot.gyro.getAngle())>=Math.abs(turnAngle);
   }
 
