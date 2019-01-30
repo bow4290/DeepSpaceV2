@@ -28,20 +28,20 @@ public class TurnWithGyroCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    // if (turnAngle>0.0){
+    if (turnAngle>0.0){
     Robot.driveTrain.turnRight();
-    // }
-    // else{
-    //   Robot.driveTrain.turnLeft();
-    // }
+    }
+    else{
+      Robot.driveTrain.turnLeft();
+    }
     
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return RobotMap.turningGyro.getAngle() > this.turnAngle;
-    //return Math.abs(Robot.gyro.getAngle())>=Math.abs(turnAngle);
+    // return RobotMap.turningGyro.getAngle() > this.turnAngle;
+    return Math.abs(RobotMap.turningGyro.getAngle())>=Math.abs(turnAngle);
   }
 
   // Called once after isFinished returns true

@@ -48,6 +48,7 @@ public class StartVisionCommand extends Command {
 
     camera = CameraServer.getInstance().startAutomaticCapture();
     camera.setResolution(320, 240);
+    camera.setFPS(10);
 
     gripPipeline = new VisionThread(camera, new GripPipeline(), pipeline -> {
       ArrayList<MatOfPoint> blobPoints = pipeline.findContoursOutput();
@@ -62,10 +63,15 @@ public class StartVisionCommand extends Command {
           averageX = averageX / currentPoints.length;
           currentAverage += averageX;
         }
-        totalAverage = currentAverage / blobPoints.size();
+        if (blobPoints.size() > 0){
+          // totalAverage = currentAverage / blobPoints.size();
+          table.putNumber("VisionThreadAverage",currentAverage/blobPoints.size());
+        }
+        else{
+          table.putNumber("VisionThreadAverage",0);
+        }
+        
       }
-      // table.putNumber("Total Average",totalAverage);
-
       // outputStream.putFrame(mat);
       // if (!pipeline.findContoursOutput().isEmpty()) {
       // if (pipeline.findContoursOutput().size() > 1) {
@@ -93,7 +99,7 @@ public class StartVisionCommand extends Command {
   protected void execute() { // double centerX;
     // double tapeDistance;
     synchronized (imgLock) {
-      totalAverage = this.totalAverage;
+      totalAverage = table.getDouble("VisionThreadAverage", 10.5);
     }
 
     // double turn = centerX - (320.0 / 2) * -1; // BEFORE COMP REMOVE -1
@@ -104,12 +110,17 @@ public class StartVisionCommand extends Command {
 
     // BEFORE COMP ADD NEGATIVE BACK
     if (totalAverage < 145) {
-      // Robot.driveTrain.turnLeft();
+      Robot.driveTrain.turnLeft();
     } else if (totalAverage > 175) {
-      // Robot.driveTrain.turnRight();
+      Robot.driveTrain.turnRight();
       // isCentered = true;
-    } else {
+    } else if (totalAverage == 0) {
+      //wait
+    }
+    else if (totalAverage > 145 && totalAverage < 175) {
       isFinished = true;
+      table.globalDeleteAll();
+
     }
 
     // if (isCentered) {
@@ -132,6 +143,7 @@ public class StartVisionCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    gripPipeline.stop();
     Robot.driveTrain.stop();
   }
 

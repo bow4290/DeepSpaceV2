@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.StartVisionCommand;
 import frc.robot.subsystems.DriveTrain;
 // import sun.nio.ch.Net;
 
@@ -45,6 +46,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {    
+  // new StartVisionCommand().start();
   }
   
   @Override

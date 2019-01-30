@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.TurnWithGyroCommand;
+import frc.robot.commands.StartVisionCommand;
 
 public class OI {
   // public Joystick rightJoystick;
@@ -104,6 +105,7 @@ public class OI {
     // Methods inherited from class edu.wpi.first.wpilibj.buttons.Trigger
     // cancelWhenActive, initSendable, toggleWhenActive, whenActive, whenInactive, whileActive
     mainXboxControllerButton1.whenPressed(new TurnWithGyroCommand(90));
+    mainXboxControllerButton2.whenPressed(new StartVisionCommand());
 
 
 

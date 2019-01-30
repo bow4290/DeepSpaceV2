@@ -28,15 +28,15 @@ public class DriveTrain extends Subsystem {
   }
 
   public void takeJoystickInputs(XboxController xboxController){
-    RobotMap.driveTrainBase.tankDrive(xboxController.getY(Hand.kLeft), xboxController.getY(Hand.kRight));;
+    RobotMap.driveTrainBase.arcadeDrive(xboxController.getY(Hand.kLeft), xboxController.getX(Hand.kLeft));;
   }
 
   public void turnLeft(){
-    RobotMap.driveTrainBase.tankDrive(.6, -.6);
+    RobotMap.driveTrainBase.arcadeDrive(0, -0.8);
   }
 
   public void turnRight(){
-    RobotMap.driveTrainBase.tankDrive(-.6, 0.6);
+    RobotMap.driveTrainBase.arcadeDrive(0, 0.8);
   }
 
   public void stop(){

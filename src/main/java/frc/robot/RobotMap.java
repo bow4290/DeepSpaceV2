@@ -59,5 +59,6 @@ public class RobotMap {
     finger = new Spark(7);
 
     turningGyro = new ADXRS450_Gyro();
+    turningGyro.reset();
   }
 }
