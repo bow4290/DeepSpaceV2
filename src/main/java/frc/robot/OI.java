@@ -108,7 +108,7 @@ public class OI {
     mainXboxControllerButton1.whenPressed(new TurnWithGyroCommand(90));
     mainXboxControllerButton2.whenPressed(new StartVisionCommand());
     mainXboxControllerButton3.whileHeld(new MoveWristToAngle(100));
-    // mainXboxControllerButton4.whileHeld(new MoveWristToAngle(0));
+    mainXboxControllerButton4.whileHeld(new MoveWristToAngle(0));
 
 
   }

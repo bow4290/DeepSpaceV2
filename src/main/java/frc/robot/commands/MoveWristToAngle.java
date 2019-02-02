@@ -36,12 +36,12 @@ public class MoveWristToAngle extends Command {
     table.putNumber("Current Wrist Angle", currentWristAngle);
     table.putNumber("Go To Angle", wristAngle);
      
-    // if (wristAngle > currentWristAngle){
+    if (wristAngle > currentWristAngle){
       Robot.wristEncoder.moveWristUp();
-    // }
-    // else if (wristAngle < currentWristAngle){
-    //   Robot.wristEncoder.moveWristDown();
-    // }
+    }
+    else if (wristAngle < currentWristAngle){
+      Robot.wristEncoder.moveWristDown();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

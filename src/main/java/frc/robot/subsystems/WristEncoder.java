@@ -29,15 +29,15 @@ public class WristEncoder extends Subsystem {
   }
 
   public void moveWristUp(){
-    RobotMap.wristMotor.set(1);
+    RobotMap.wristMotor.set(.4);
   }
 
   public void moveWristDown(){
-    RobotMap.wristMotor.set(-0.2);
+    RobotMap.wristMotor.set(-0.1);
   }
 
   public void stopWrist(){
-    RobotMap.wristMotor.set(0);
+    RobotMap.wristMotor.set(0.1);
   }
 
 
