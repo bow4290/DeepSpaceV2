@@ -10,9 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.TurnWithGyroCommand;
-import frc.robot.commands.MoveWristToAngle;
-import frc.robot.commands.StartVisionCommand;
+import frc.robot.commands.*;
 
 public class OI {
   // public Joystick rightJoystick;
@@ -111,7 +109,11 @@ public class OI {
     mainXboxControllerButton3.whileHeld(new MoveWristToAngle(100));
     mainXboxControllerButton4.whileHeld(new MoveWristToAngle(0));
 
-    // mainXboxControllerButton5.whileHeld(new Intake(0));
+    mainXboxControllerButton5.whileHeld(new PickUpBall());
+    mainXboxControllerButton6.whileHeld(new ThrowBall());
+    
+    mainXboxControllerButton7.whileHeld(new ElevatorUp());
+    mainXboxControllerButton8.whileHeld(new ElevatorDown());
 
 
   }

@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.StartVisionCommand;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.ElevatorMotor;
 import frc.robot.subsystems.IntakeOutakeMotor;
 // import sun.nio.ch.Net;
 import frc.robot.subsystems.WristMotor;
@@ -34,6 +35,7 @@ public class Robot extends TimedRobot {
   public static WristMotor wristMotor;
   private NetworkTable nTable;
   public static IntakeOutakeMotor intakeOutakeMotor;
+  public static ElevatorMotor elevatorMotor;
 
   
   @Override
@@ -43,6 +45,7 @@ public class Robot extends TimedRobot {
     driveTrain = new DriveTrain();
     wristMotor = new WristMotor();
     intakeOutakeMotor = new IntakeOutakeMotor();
+    elevatorMotor = new ElevatorMotor();
     nTable = NetworkTable.getTable("gyroOut");
   }
 

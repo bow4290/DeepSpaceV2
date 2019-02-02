@@ -36,7 +36,7 @@ public class IntakeOutakeMotor extends Subsystem {
     RobotMap.fingerMotor.set(-.4);
   }
 
-  public void stopWrist(){
+  public void stopFinger(){
     RobotMap.fingerMotor.set(0.0);
   }
 

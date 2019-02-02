@@ -14,13 +14,7 @@ import frc.robot.*;
 
 
 public class ThrowBall extends Command {
-  private double pickupBallNumber = 0.0;
-  private NetworkTable table = NetworkTable.getTable("tables");
-  public ThrowBall(double pickupBallNumber) {
-    this.pickupBallNumber = pickupBallNumber;
-    // this.currentWristAngle = RobotMap.wristEncoder.getRaw();
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+  public ThrowBall() {
     // requires(Robot.wristEncoder);
   }
 
@@ -32,12 +26,7 @@ public class ThrowBall extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    table.putNumber("Outake Number", pickupBallNumber);
-    // table.putNumber("Go To Angle", wristAngle);
-     
-    if (pickupBallNumber == 1){
       Robot.intakeOutakeMotor.Outake();
-    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

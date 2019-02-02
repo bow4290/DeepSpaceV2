@@ -13,14 +13,8 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import frc.robot.*;
 
 
-public class PickupBall extends Command {
-  private double pickupBallNumber = 0.0;
-  private NetworkTable table = NetworkTable.getTable("tables");
-  public PickupBall(double pickupBallNumber) {
-    this.pickupBallNumber = pickupBallNumber;
-    // this.currentWristAngle = RobotMap.wristEncoder.getRaw();
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+public class PickUpBall extends Command {
+  public PickUpBall() {
     // requires(Robot.wristEncoder);
   }
 
@@ -32,12 +26,9 @@ public class PickupBall extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    table.putNumber("Intake Number", pickupBallNumber);
-    // table.putNumber("Go To Angle", wristAngle);
      
-    if (pickupBallNumber == 0){
       Robot.intakeOutakeMotor.Intake();
-    }
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
