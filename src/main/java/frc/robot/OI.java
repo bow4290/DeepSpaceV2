@@ -105,6 +105,7 @@ public class OI {
     // Methods inherited from class edu.wpi.first.wpilibj.buttons.Trigger
     // cancelWhenActive, initSendable, toggleWhenActive, whenActive, whenInactive, whileActive
     mainXboxControllerButton1.whenPressed(new TurnWithGyroCommand(90));
+    mainXboxControllerButton9.whenPressed(new TurnWithGyroCommand(180));
     mainXboxControllerButton2.whenPressed(new StartVisionCommand());
 
 
