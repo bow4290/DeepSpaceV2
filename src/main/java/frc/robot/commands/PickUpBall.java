@@ -1,3 +1,4 @@
+
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -8,11 +9,19 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import frc.robot.*;
+
 
 public class PickupBall extends Command {
-  public PickupBall() {
+  private double pickupBallNumber = 0.0;
+  private NetworkTable table = NetworkTable.getTable("tables");
+  public PickupBall(double pickupBallNumber) {
+    this.pickupBallNumber = pickupBallNumber;
+    // this.currentWristAngle = RobotMap.wristEncoder.getRaw();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    // requires(Robot.wristEncoder);
   }
 
   // Called just before this Command runs the first time
@@ -23,22 +32,30 @@ public class PickupBall extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    table.putNumber("Intake Number", pickupBallNumber);
+    // table.putNumber("Go To Angle", wristAngle);
+     
+    if (pickupBallNumber == 0){
+      Robot.intakeOutakeMotor.Intake();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return false;// wristAngle == currentWristAngle;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.wristMotor.stopWrist();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

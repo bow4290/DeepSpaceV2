@@ -7,7 +7,13 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
+import frc.robot.commands.DriveWithJoysticks;
+import frc.robot.commands.MoveWristToAngle;
 
 /**
  * Add your docs here.
@@ -19,6 +25,21 @@ public class IntakeOutakeMotor extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    // setDefaultCommand(new MoveWristToAngle(90));
   }
+
+  public void Intake(){
+    RobotMap.fingerMotor.set(.4);
+  }
+
+  public void Outake(){
+    RobotMap.fingerMotor.set(-.4);
+  }
+
+  public void stopWrist(){
+    RobotMap.fingerMotor.set(0.0);
+  }
+
+
+
 }

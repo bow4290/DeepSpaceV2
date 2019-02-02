@@ -46,6 +46,7 @@ public class RobotMap {
   public static Encoder elbowEncoder;
 
   public static Talon wristMotor;
+  public static Talon fingerMotor;
 
   public static void init(){
     // driveTrainMotorRightFront = new Spark(0);
@@ -62,7 +63,7 @@ public class RobotMap {
     // elevator = new Spark(4);
     // elbow = new Spark(6);
     wristMotor = new Talon(5);
-    finger = new Talon(7);
+    fingerMotor = new Talon(7);
 
     wristEncoder = new Encoder(1, 2);
 
