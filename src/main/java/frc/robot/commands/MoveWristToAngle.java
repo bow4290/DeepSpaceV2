@@ -39,7 +39,7 @@ public class MoveWristToAngle extends Command {
     if (wristAngle > currentWristAngle){
       Robot.wristEncoder.moveWristUp();
     }
-    else if (wristAngle < currentWristAngle){
+    else if (wristAngle == 0){
       Robot.wristEncoder.moveWristDown();
     }
   }
