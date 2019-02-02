@@ -37,10 +37,10 @@ public class MoveWristToAngle extends Command {
     table.putNumber("Go To Angle", wristAngle);
      
     if (wristAngle > currentWristAngle){
-      Robot.wristEncoder.moveWristUp();
+      Robot.wristMotor.moveWristUp();
     }
     else if (wristAngle == 0){
-      Robot.wristEncoder.moveWristDown();
+      Robot.wristMotor.moveWristDown();
     }
   }
 
@@ -53,7 +53,7 @@ public class MoveWristToAngle extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.wristEncoder.stopWrist();
+    Robot.wristMotor.stopWrist();
   }
 
   // Called when another command which requires one or more of the same

@@ -9,8 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class PickupBall extends Command {
-  public PickupBall() {
+public class ElbowDown extends Command {
+  public ElbowDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }

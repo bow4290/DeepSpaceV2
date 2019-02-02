@@ -35,7 +35,7 @@ public class OI {
   // private JoystickButton leftJoystickButton7;
   // private JoystickButton leftJoystickButton8;
 
-  public Joystick mainXboxController;
+  public XboxController mainXboxController;
   private JoystickButton mainXboxControllerButton1;
   private JoystickButton mainXboxControllerButton2;
   private JoystickButton mainXboxControllerButton3;
@@ -78,7 +78,7 @@ public class OI {
     // leftJoystickButton7 = new JoystickButton(leftJoystick, 6);
     // leftJoystickButton8 = new JoystickButton(leftJoystick, 7);    
     
-    mainXboxController = new Joystick(0);
+    mainXboxController = new XboxController(0);
     mainXboxControllerButton1 = new JoystickButton(mainXboxController, 1);
     mainXboxControllerButton2 = new JoystickButton(mainXboxController, 2);
     mainXboxControllerButton3 = new JoystickButton(mainXboxController, 3);
@@ -107,8 +107,11 @@ public class OI {
     // cancelWhenActive, initSendable, toggleWhenActive, whenActive, whenInactive, whileActive
     mainXboxControllerButton1.whenPressed(new TurnWithGyroCommand(90));
     mainXboxControllerButton2.whenPressed(new StartVisionCommand());
+    
     mainXboxControllerButton3.whileHeld(new MoveWristToAngle(100));
     mainXboxControllerButton4.whileHeld(new MoveWristToAngle(0));
+
+    // mainXboxControllerButton5.whileHeld(new )
 
 
   }

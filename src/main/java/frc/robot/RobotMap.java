@@ -62,7 +62,7 @@ public class RobotMap {
     // elevator = new Spark(4);
     // elbow = new Spark(6);
     wristMotor = new Talon(5);
-    // finger = new Spark(7);
+    finger = new Talon(7);
 
     wristEncoder = new Encoder(1, 2);
 
