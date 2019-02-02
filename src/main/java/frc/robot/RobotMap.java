@@ -10,9 +10,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
@@ -40,23 +42,29 @@ public class RobotMap {
   private static SpeedController finger;
   
   public static ADXRS450_Gyro turningGyro;
+  public static Encoder wristEncoder;
+  public static Encoder elbowEncoder;
+
+  public static Talon wristMotor;
 
   public static void init(){
-    driveTrainMotorRightFront = new Spark(0);
-    driveTrainMotorRightBack = new Spark(1);
-    driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
+    // driveTrainMotorRightFront = new Spark(0);
+    // driveTrainMotorRightBack = new Spark(1);
+    // driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
 
-    driveTrainMotorLeftFront = new Spark(2);
-    driveTrainMotorLeftBack = new Spark(3);
-    driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
+    // driveTrainMotorLeftFront = new Spark(2);
+    // driveTrainMotorLeftBack = new Spark(3);
+    // driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
 
-    gearShiftSolenoid = new DoubleSolenoid(0, 1);
-    driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
+    // gearShiftSolenoid = new DoubleSolenoid(0, 1);
+    // driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
     // driveTrainBase = new DifferentialDrive(driveTrainMotorLeftBack, driveTrainMotorRightFront);
-    elevator = new Spark(4);
-    elbow = new Spark(5);
-    wrist = new Spark(6);
-    finger = new Spark(7);
+    // elevator = new Spark(4);
+    // elbow = new Spark(6);
+    wristMotor = new Talon(5);
+    // finger = new Spark(7);
+
+    wristEncoder = new Encoder(1, 2);
 
     turningGyro = new ADXRS450_Gyro();
     turningGyro.reset();

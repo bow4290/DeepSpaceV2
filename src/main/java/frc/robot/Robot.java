@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -17,6 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.StartVisionCommand;
 import frc.robot.subsystems.DriveTrain;
 // import sun.nio.ch.Net;
+import frc.robot.subsystems.WristEncoder;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,6 +30,7 @@ import frc.robot.subsystems.DriveTrain;
 public class Robot extends TimedRobot {
   public static OI oi;
   public static DriveTrain driveTrain;
+  public static WristEncoder wristEncoder;
   private NetworkTable nTable;
 
   
@@ -36,6 +39,7 @@ public class Robot extends TimedRobot {
     RobotMap.init();
     oi = new OI();
     driveTrain = new DriveTrain();
+    wristEncoder = new WristEncoder();
     nTable = NetworkTable.getTable("gyroOut");
   }
 
