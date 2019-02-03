@@ -27,8 +27,8 @@ public class DriveTrain extends Subsystem {
     setDefaultCommand(new DriveWithJoysticks());
   }
 
-  public void takeJoystickInputs(XboxController xboxController){
-    RobotMap.driveTrainBase.arcadeDrive(xboxController.getY(), xboxController.getX());;
+  public void takeJoystickInputs(Joystick joystick){
+    RobotMap.driveTrainBase.tankDrive(joystick.getY(), joystick.getX());;
   }
 
   public void turnLeft(){

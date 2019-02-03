@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.StartVisionCommand;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.ElbowMotor;
 import frc.robot.subsystems.ElevatorMotor;
 import frc.robot.subsystems.IntakeOutakeMotor;
 // import frc.RobotMap.subsystems.L 
@@ -39,6 +40,7 @@ public class Robot extends TimedRobot {
   public static IntakeOutakeMotor intakeOutakeMotor;
   public static ElevatorMotor elevatorMotor;
   public static DigitalInput lineFollower;
+  public static ElbowMotor elbowMotor;
 
   
   @Override
@@ -49,6 +51,7 @@ public class Robot extends TimedRobot {
     wristMotor = new WristMotor();
     intakeOutakeMotor = new IntakeOutakeMotor();
     elevatorMotor = new ElevatorMotor();
+    elbowMotor = new ElbowMotor();
     nTable = NetworkTable.getTable("gyroOut");
     // nTable = NetworkTable
     // lineFollower = new DigitalInput(3);
@@ -71,7 +74,7 @@ public class Robot extends TimedRobot {
     nTable.putNumber("Current Gyro Value", gyroAngle);
     boolean lineFollowerValue = RobotMap.lineFollower.get();
     nTable.putBoolean("Line Follower Value", lineFollowerValue);
-    //RobotMap.driveTrainBase.tankDrive(oi.leftJoystick.getY(), oi.rightJoystick.getY());   
+    RobotMap.driveTrainBase.tankDrive(oi.rightJoystick.getY(), oi.leftJoystick.getY());   
   }
 
   @Override

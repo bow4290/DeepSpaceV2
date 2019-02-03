@@ -36,7 +36,7 @@ public class MoveWristToAngle extends Command {
     table.putNumber("Current Wrist Angle", currentWristAngle);
     table.putNumber("Go To Angle", wristAngle);
      
-    if (wristAngle > currentWristAngle){
+    if (wristAngle == 1){
       Robot.wristMotor.moveWristUp();
     }
     else if (wristAngle == 0){

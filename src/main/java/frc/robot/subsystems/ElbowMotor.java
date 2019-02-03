@@ -28,16 +28,16 @@ public class ElbowMotor extends Subsystem {
     // setDefaultCommand(new MoveWristToAngle(90));
   }
 
-  public void moveWristUp(){
-    // RobotMap.elbowMotor.set(.4);
+  public void moveElbowUp(){
+    RobotMap.elbowMotor.set(.8);
   }
 
-  public void moveWristDown(){
-    // RobotMap.elbowMotor.set(-0.1);
+  public void moveElbowDown(){
+    RobotMap.elbowMotor.set(-.3);
   }
 
-  public void stopWrist(){
-    // RobotMap.elbowMotor.set(0.1);
+  public void stopElbow(){
+    RobotMap.elbowMotor.set(0.0);
   }
 
 

@@ -12,11 +12,14 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.subsystems.ElbowMotor;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -46,29 +49,31 @@ public class RobotMap {
   public static Encoder wristEncoder;
   public static Encoder elbowEncoder;
 
+  // public static Jaguar elbow;
   public static Talon wristMotor;
   public static Talon fingerMotor;
-  public static Talon elevatorMotor;
+  public static VictorSP elevatorMotor;
+  public static Jaguar elbowMotor;
 
   public static DigitalInput lineFollower;  
 
   public static void init(){
     driveTrainMotorRightFront = new Spark(8);
-    // driveTrainMotorRightBack = new Spark(9);
-    // driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
+    driveTrainMotorRightBack = new Spark(9);
+    driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
 
-    // driveTrainMotorLeftFront = new Spark(2);
-    driveTrainMotorLeftBack = new Spark(3);
-    // driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
+    driveTrainMotorLeftFront = new Spark(6);
+    driveTrainMotorLeftBack = new Spark(7);
+    driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
 
     // gearShiftSolenoid = new DoubleSolenoid(0, 1);
-    // driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
-     driveTrainBase = new DifferentialDrive(driveTrainMotorLeftBack, driveTrainMotorRightFront);
+    driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
+    //  driveTrainBase = new DifferentialDrive(driveTrainRight, driveTrainLeft);
     // elevator = new Spark(4);
-    // elbow = new Spark(6);
-    wristMotor = new Talon(5);
-    fingerMotor = new Talon(7);
-    elevatorMotor = new Talon(8);
+    elbowMotor = new Jaguar(5);
+    wristMotor = new Talon(4);
+    fingerMotor = new Talon(3);
+    elevatorMotor = new VictorSP(2);
 
     wristEncoder = new Encoder(1, 2);
 

@@ -33,7 +33,7 @@ public class IntakeOutakeMotor extends Subsystem {
   }
 
   public void Outake(){
-    RobotMap.fingerMotor.set(-.4);
+    RobotMap.fingerMotor.set(-.7);
   }
 
   public void stopFinger(){
