@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -19,6 +20,7 @@ import frc.robot.commands.StartVisionCommand;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorMotor;
 import frc.robot.subsystems.IntakeOutakeMotor;
+// import frc.RobotMap.subsystems.L 
 // import sun.nio.ch.Net;
 import frc.robot.subsystems.WristMotor;
 
@@ -36,6 +38,7 @@ public class Robot extends TimedRobot {
   private NetworkTable nTable;
   public static IntakeOutakeMotor intakeOutakeMotor;
   public static ElevatorMotor elevatorMotor;
+  public static DigitalInput lineFollower;
 
   
   @Override
@@ -47,6 +50,8 @@ public class Robot extends TimedRobot {
     intakeOutakeMotor = new IntakeOutakeMotor();
     elevatorMotor = new ElevatorMotor();
     nTable = NetworkTable.getTable("gyroOut");
+    // nTable = NetworkTable
+    // lineFollower = new DigitalInput(3);
   }
 
   
@@ -64,6 +69,8 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
+    boolean lineFollowerValue = RobotMap.lineFollower.get();
+    nTable.putBoolean("Line Follower Value", lineFollowerValue);
     //RobotMap.driveTrainBase.tankDrive(oi.leftJoystick.getY(), oi.rightJoystick.getY());   
   }
 

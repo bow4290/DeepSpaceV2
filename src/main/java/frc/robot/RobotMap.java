@@ -9,6 +9,7 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
@@ -49,18 +50,20 @@ public class RobotMap {
   public static Talon fingerMotor;
   public static Talon elevatorMotor;
 
+  public static DigitalInput lineFollower;  
+
   public static void init(){
-    // driveTrainMotorRightFront = new Spark(0);
-    // driveTrainMotorRightBack = new Spark(1);
+    driveTrainMotorRightFront = new Spark(8);
+    // driveTrainMotorRightBack = new Spark(9);
     // driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
 
     // driveTrainMotorLeftFront = new Spark(2);
-    // driveTrainMotorLeftBack = new Spark(3);
+    driveTrainMotorLeftBack = new Spark(3);
     // driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
 
     // gearShiftSolenoid = new DoubleSolenoid(0, 1);
     // driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
-    // driveTrainBase = new DifferentialDrive(driveTrainMotorLeftBack, driveTrainMotorRightFront);
+     driveTrainBase = new DifferentialDrive(driveTrainMotorLeftBack, driveTrainMotorRightFront);
     // elevator = new Spark(4);
     // elbow = new Spark(6);
     wristMotor = new Talon(5);
@@ -68,6 +71,8 @@ public class RobotMap {
     elevatorMotor = new Talon(8);
 
     wristEncoder = new Encoder(1, 2);
+
+    lineFollower = new DigitalInput(3);
 
     turningGyro = new ADXRS450_Gyro();
     turningGyro.reset();
