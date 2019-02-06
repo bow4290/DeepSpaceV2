@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.subsystems.ElbowMotor;
 
 /**
@@ -29,7 +30,7 @@ import frc.robot.subsystems.ElbowMotor;
  */
 public class RobotMap {
   
-  public static DifferentialDrive driveTrainBase;
+  public static MecanumDrive driveTrainBase;
   private static DoubleSolenoid gearShiftSolenoid;
 
   private static SpeedController driveTrainMotorRightFront; 
@@ -67,7 +68,7 @@ public class RobotMap {
     driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
 
     // gearShiftSolenoid = new DoubleSolenoid(0, 1);
-    driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
+    driveTrainBase = new MecanumDrive(driveTrainMotorLeftFront, driveTrainMotorLeftBack, driveTrainMotorRightFront, driveTrainMotorRightBack);
     //  driveTrainBase = new DifferentialDrive(driveTrainRight, driveTrainLeft);
     // elevator = new Spark(4);
     elbowMotor = new Jaguar(5);

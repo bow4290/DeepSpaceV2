@@ -16,6 +16,7 @@ import frc.robot.*;
 public class PickUpBall extends Command {
   public PickUpBall() {
     // requires(Robot.wristEncoder);
+    // requires(Robot.intakeOutakeMotor);
   }
 
   // Called just before this Command runs the first time

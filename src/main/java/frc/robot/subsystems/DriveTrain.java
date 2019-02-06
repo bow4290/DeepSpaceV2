@@ -28,7 +28,7 @@ public class DriveTrain extends Subsystem {
   }
 
   public void takeJoystickInputs(Joystick joystick){
-    RobotMap.driveTrainBase.tankDrive(joystick.getY(), joystick.getX());;
+    RobotMap.driveTrainBase.driveCartesian(joystick.getY(), joystick.getX(), 0.0);;
   }
 
   public void turnLeft(){

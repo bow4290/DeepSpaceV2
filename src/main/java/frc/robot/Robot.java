@@ -52,9 +52,9 @@ public class Robot extends TimedRobot {
     intakeOutakeMotor = new IntakeOutakeMotor();
     elevatorMotor = new ElevatorMotor();
     elbowMotor = new ElbowMotor();
+    NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");
-    // nTable = NetworkTable
-    // lineFollower = new DigitalInput(3);
+    RobotMap.wristEncoder.reset();  
   }
 
   
@@ -74,7 +74,7 @@ public class Robot extends TimedRobot {
     nTable.putNumber("Current Gyro Value", gyroAngle);
     boolean lineFollowerValue = RobotMap.lineFollower.get();
     nTable.putBoolean("Line Follower Value", lineFollowerValue);
-    RobotMap.driveTrainBase.tankDrive(oi.rightJoystick.getY(), oi.leftJoystick.getY());   
+    RobotMap.driveTrainBase.driveCartesian(oi.rightJoystick.getY(), oi.leftJoystick.getY(), 0.0);   
   }
 
   @Override
@@ -88,7 +88,6 @@ public class Robot extends TimedRobot {
   
   @Override
   public void autonomousInit() {
-    RobotMap.wristEncoder.reset();  
   }
   
   @Override

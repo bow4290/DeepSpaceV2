@@ -19,10 +19,10 @@ public class MoveWristToAngle extends Command {
   private NetworkTable table = NetworkTable.getTable("tables");
   public MoveWristToAngle(double wristAngle) {
     this.wristAngle = wristAngle;
-    // this.currentWristAngle = RobotMap.wristEncoder.getRaw();
+    this.currentWristAngle = RobotMap.wristEncoder.getRaw();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    // requires(Robot.wristEncoder);
+    // requires(Robot.wristMotor);
   }
 
   // Called just before this Command runs the first time
@@ -33,7 +33,7 @@ public class MoveWristToAngle extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    table.putNumber("Current Wrist Angle", currentWristAngle);
+    table.putDouble("Current Wrist Angle", RobotMap.wristEncoder.get());
     table.putNumber("Go To Angle", wristAngle);
      
     if (wristAngle == 1){

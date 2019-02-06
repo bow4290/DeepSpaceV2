@@ -15,6 +15,7 @@ import frc.robot.Robot;
 public class ElbowDown extends Command {
   public ElbowDown() {
     // requires(Robot.wristEncoder);
+    // requires(Robot.elbowMotor);
   }
 
   // Called just before this Command runs the first time

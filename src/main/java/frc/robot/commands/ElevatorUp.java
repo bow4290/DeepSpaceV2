@@ -8,12 +8,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 
 public class ElevatorUp extends Command {
   public ElevatorUp() {
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    // requires(Robot.elevatorMotor);
   }
 
   // Called just before this Command runs the first time

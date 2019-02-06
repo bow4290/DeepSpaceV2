@@ -16,6 +16,8 @@ import frc.robot.*;
 public class ThrowBall extends Command {
   public ThrowBall() {
     // requires(Robot.wristEncoder);
+    // requires(Robot.intakeOutakeMotor);
+
   }
 
   // Called just before this Command runs the first time
