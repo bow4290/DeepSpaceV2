@@ -9,6 +9,7 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -40,6 +41,9 @@ public class RobotMap {
   private static SpeedController finger;
   
   public static ADXRS450_Gyro turningGyro;
+  public static AnalogInput lineSensorRight;
+  public static AnalogInput lineSensorCenter;
+  public static AnalogInput lineSensorLeft;
 
   public static void init(){
     driveTrainMotorRightFront = new Spark(0);
@@ -57,6 +61,10 @@ public class RobotMap {
     elbow = new Spark(5);
     wrist = new Spark(6);
     finger = new Spark(7);
+
+    lineSensorRight = new AnalogInput(0);
+    lineSensorCenter = new AnalogInput(1);
+    lineSensorLeft = new AnalogInput(2);
 
     turningGyro = new ADXRS450_Gyro();
     turningGyro.reset();

@@ -25,7 +25,7 @@ import frc.robot.subsystems.DriveTrain;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends TimedRobot {
+public class Robot extends TimedRobot { 
   public static OI oi;
   public static DriveTrain driveTrain;
   private NetworkTable nTable;
@@ -54,6 +54,14 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
+
+    double lineSensorRightValue = RobotMap.lineSensorRight.getVoltage();
+    double lineSensorCenterValue = RobotMap.lineSensorCenter.getVoltage();
+    double lineSensorLeftValue = RobotMap.lineSensorLeft.getVoltage();
+
+    nTable.putNumber("Right Sensor", lineSensorRightValue);
+    nTable.putNumber("Center Sensor", lineSensorCenterValue);
+    nTable.putNumber("Left Sensor", lineSensorLeftValue);
     //RobotMap.driveTrainBase.tankDrive(oi.leftJoystick.getY(), oi.rightJoystick.getY());   
   }
 
