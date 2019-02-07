@@ -1,3 +1,4 @@
+
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -8,11 +9,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import frc.robot.Robot;
 
-public class DriveWithJoysticks extends Command {
-  public DriveWithJoysticks() {
-    requires(Robot.driveTrain);
+public class ElbowDown extends Command {
+  public ElbowDown() {
+    // requires(Robot.wristEncoder);
+    // requires(Robot.elbowMotor);
   }
 
   // Called just before this Command runs the first time
@@ -23,24 +26,27 @@ public class DriveWithJoysticks extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveTrain.takeJoystickInputs(Robot.oi.rightJoystick);
+     
+      Robot.elbowMotor.moveElbowDown();
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return false;// wristAngle == currentWristAngle;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.driveTrain.stop();
-  }
+    }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.elbowMotor.stopElbow();
+    end();
   }
 }

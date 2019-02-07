@@ -1,3 +1,4 @@
+
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -8,11 +9,20 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import frc.robot.*;
 
-public class DriveWithJoysticks extends Command {
-  public DriveWithJoysticks() {
-    requires(Robot.driveTrain);
+
+public class MoveWristToAngle extends Command {
+  private double wristAngle = 0.0;
+  private double currentWristAngle = 0.0;
+  private NetworkTable table = NetworkTable.getTable("tables");
+  public MoveWristToAngle(double wristAngle) {
+    this.wristAngle = wristAngle;
+    this.currentWristAngle = RobotMap.wristEncoder.getRaw();
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    // requires(Robot.wristMotor);
   }
 
   // Called just before this Command runs the first time
@@ -23,24 +33,33 @@ public class DriveWithJoysticks extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveTrain.takeJoystickInputs(Robot.oi.rightJoystick);
+    table.putDouble("Current Wrist Angle", RobotMap.wristEncoder.get());
+    table.putNumber("Go To Angle", wristAngle);
+     
+    if (wristAngle == 1){
+      Robot.wristMotor.moveWristUp();
+    }
+    else if (wristAngle == 0){
+      Robot.wristMotor.moveWristDown();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return false;// wristAngle == currentWristAngle;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.driveTrain.stop();
+    Robot.wristMotor.stopWrist();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

@@ -13,33 +13,33 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveWithJoysticks;
+import frc.robot.commands.MoveWristToAngle;
 
 /**
  * Add your docs here.
  */
-public class DriveTrain extends Subsystem {
+public class ElbowMotor extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new DriveWithJoysticks());
+    // setDefaultCommand(new MoveWristToAngle(90));
   }
 
-  public void takeJoystickInputs(Joystick joystick){
-    RobotMap.driveTrainBase.arcadeDrive(joystick.getY(), joystick.getX(), true);
+  public void moveElbowUp(){
+    RobotMap.elbowMotor.set(.8);
   }
 
-  public void turnLeft(){
-    // RobotMap.driveTrainBase.arcadeDrive(0, -0.8);
+  public void moveElbowDown(){
+    RobotMap.elbowMotor.set(-.3);
   }
 
-  public void turnRight(){
-    // RobotMap.driveTrainBase.arcadeDrive(0, 0.8);
+  public void stopElbow(){
+    RobotMap.elbowMotor.set(0.0);
   }
 
-  public void stop(){
-    // RobotMap.driveTrainBase.tankDrive(0,0);
-  }
+
+
 }
