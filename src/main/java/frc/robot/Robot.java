@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.DriveWithJoysticks;
 import frc.robot.commands.StartVisionCommand;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElbowMotor;
@@ -70,11 +71,12 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
+    driveTrain.takeJoystickInputs(oi.rightJoystick);
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
-    boolean lineFollowerValue = RobotMap.lineFollower.get();
-    nTable.putBoolean("Line Follower Value", lineFollowerValue);
-    RobotMap.driveTrainBase.driveCartesian(oi.rightJoystick.getY(), oi.leftJoystick.getY(), 0.0);   
+    double lineFollowerValue = RobotMap.lineFollower.getVoltage();
+    nTable.putNumber("Line Follower Value", lineFollowerValue);
+       
   }
 
   @Override

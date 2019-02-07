@@ -9,6 +9,7 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -30,7 +31,7 @@ import frc.robot.subsystems.ElbowMotor;
  */
 public class RobotMap {
   
-  public static MecanumDrive driveTrainBase;
+  public static DifferentialDrive driveTrainBase;
   private static DoubleSolenoid gearShiftSolenoid;
 
   private static SpeedController driveTrainMotorRightFront; 
@@ -56,29 +57,29 @@ public class RobotMap {
   public static VictorSP elevatorMotor;
   public static Jaguar elbowMotor;
 
-  public static DigitalInput lineFollower;  
+  public static AnalogInput lineFollower;  
 
   public static void init(){
-    driveTrainMotorRightFront = new Spark(8);
-    driveTrainMotorRightBack = new Spark(9);
+    driveTrainMotorRightFront = new Spark(0);    
+    driveTrainMotorRightBack = new Spark(1);
     driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
 
-    driveTrainMotorLeftFront = new Spark(6);
-    driveTrainMotorLeftBack = new Spark(7);
+    driveTrainMotorLeftFront = new Spark(2);
+    driveTrainMotorLeftBack = new Spark(3);
     driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
 
-    // gearShiftSolenoid = new DoubleSolenoid(0, 1);
-    driveTrainBase = new MecanumDrive(driveTrainMotorLeftFront, driveTrainMotorLeftBack, driveTrainMotorRightFront, driveTrainMotorRightBack);
-    //  driveTrainBase = new DifferentialDrive(driveTrainRight, driveTrainLeft);
-    // elevator = new Spark(4);
+    gearShiftSolenoid = new DoubleSolenoid(0, 1);
+    
+    driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
+    
     elbowMotor = new Jaguar(5);
-    wristMotor = new Talon(4);
-    fingerMotor = new Talon(3);
-    elevatorMotor = new VictorSP(2);
+    wristMotor = new Talon(6);
+    fingerMotor = new Talon(7);
+    elevatorMotor = new VictorSP(4);
 
-    wristEncoder = new Encoder(1, 2);
+    wristEncoder = new Encoder(2,3);
 
-    lineFollower = new DigitalInput(3);
+    lineFollower = new AnalogInput(4);
 
     turningGyro = new ADXRS450_Gyro();
     turningGyro.reset();
