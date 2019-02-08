@@ -29,11 +29,11 @@ public class WristMotor extends Subsystem {
   }
 
   public void moveWristUp(){
-    RobotMap.wristMotor.set(.25);
+    RobotMap.wristMotor.set(.45);
   }
 
   public void moveWristDown(){
-    RobotMap.wristMotor.set(-0.05);
+    RobotMap.wristMotor.set(-0.25);
   }
 
   public void stopWrist(){

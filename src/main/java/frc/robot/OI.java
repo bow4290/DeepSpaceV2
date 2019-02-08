@@ -111,14 +111,14 @@ public class OI {
     rightJoystickButton1.whileHeld(new MoveWristToAngle(1));
     rightJoystickButton2.whileHeld(new MoveWristToAngle(0));
 
-    rightJoystickButton3.whileHeld(new PickUpBall());
-    rightJoystickButton4.whileHeld(new ThrowBall());
+    rightJoystickButton7.whileHeld(new PickUpBall());
+    rightJoystickButton8.whileHeld(new ThrowBall());
     
     rightJoystickButton5.whileHeld(new ElevatorUp());
     rightJoystickButton6.whileHeld(new ElevatorDown());
 
-    rightJoystickButton7.whileHeld(new ElbowUp());
-    rightJoystickButton8.whileHeld(new ElbowDown());
+    rightJoystickButton3.whileHeld(new ElbowUp());
+    rightJoystickButton4.whileHeld(new ElbowDown());
 
 
 

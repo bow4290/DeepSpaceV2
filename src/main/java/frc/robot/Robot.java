@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
     elbowMotor = new ElbowMotor();
     NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");
-    RobotMap.wristEncoder.reset();  
+    //RobotMap.wristEncoder.reset();  
   }
 
   

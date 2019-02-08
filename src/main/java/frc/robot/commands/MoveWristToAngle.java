@@ -14,10 +14,10 @@ import frc.robot.*;
 
 
 public class MoveWristToAngle extends Command {
-  private double wristAngle = 0.0;
-  private double currentWristAngle = 0.0;
+  private int wristAngle = 0;
+  private int currentWristAngle = 0;
   private NetworkTable table = NetworkTable.getTable("tables");
-  public MoveWristToAngle(double wristAngle) {
+  public MoveWristToAngle(int wristAngle) {
     this.wristAngle = wristAngle;
     this.currentWristAngle = RobotMap.wristEncoder.getRaw();
     // Use requires() here to declare subsystem dependencies
@@ -33,7 +33,7 @@ public class MoveWristToAngle extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    table.putDouble("Current Wrist Angle", RobotMap.wristEncoder.get());
+    table.putNumber("Current Wrist Angle", RobotMap.wristEncoder.get());
     table.putNumber("Go To Angle", wristAngle);
      
     if (wristAngle == 1){
