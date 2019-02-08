@@ -57,7 +57,9 @@ public class RobotMap {
   public static VictorSP elevatorMotor;
   public static Jaguar elbowMotor;
 
-  public static AnalogInput lineFollower;  
+  public static AnalogInput lineFollowerLeft;
+  public static AnalogInput lineFollowerCenter;
+  public static AnalogInput lineFollowerRight;  
 
   public static void init(){
     driveTrainMotorRightFront = new Spark(0);    
@@ -79,7 +81,9 @@ public class RobotMap {
 
     wristEncoder = new Encoder(2,3);
 
-    lineFollower = new AnalogInput(4);
+    lineFollowerRight = new AnalogInput(0);
+    lineFollowerCenter = new AnalogInput(1);
+    lineFollowerLeft = new AnalogInput(2);
 
     turningGyro = new ADXRS450_Gyro();
     turningGyro.reset();

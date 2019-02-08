@@ -73,11 +73,22 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
     driveTrain.takeJoystickInputs(oi.rightJoystick);
+    
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
-    double lineFollowerValue = RobotMap.lineFollower.getVoltage();
-    nTable.putNumber("Line Follower Value", lineFollowerValue);
-       
+
+    double lineFollowerLeftValue = RobotMap.lineFollowerLeft.getVoltage();
+    double lineFollowerCenterValue = RobotMap.lineFollowerCenter.getVoltage();
+    double lineFollowerRightValue = RobotMap.lineFollowerRight.getVoltage();
+    nTable.putNumber("Line Follower Left Value", lineFollowerLeftValue);
+    nTable.putNumber("Line Follower Center Value", lineFollowerCenterValue);
+    nTable.putNumber("Line Follower Right Value", lineFollowerRightValue);
+
+    int wristEncoderValue = RobotMap.wristEncoder.get();
+    int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
+    nTable.putNumber("Wrist Value", wristEncoderValue);
+    nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
+   
   }
 
   @Override
