@@ -8,8 +8,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveWithJoysticks;
@@ -31,12 +29,15 @@ public class DriveTrain extends Subsystem {
     RobotMap.driveTrainBase.arcadeDrive(joystick.getY(), joystick.getX(), true);
   }
 
+  public void driveStraight(){
+    // RobotMap.driveTrainBase.arcadeDrive(.3, 0);
+  }
   public void turnLeft(){
-    // RobotMap.driveTrainBase.arcadeDrive(0, -0.8);
+    // RobotMap.driveTrainBase.arcadeDrive(.3, -0.3);
   }
 
   public void turnRight(){
-    // RobotMap.driveTrainBase.arcadeDrive(0, 0.8);
+    // RobotMap.driveTrainBase.arcadeDrive(.3, 0.3);
   }
 
   public void stop(){
