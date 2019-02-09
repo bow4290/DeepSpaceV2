@@ -48,7 +48,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     RobotMap.init();
-    oi = new OI();
+    //oi = new OI();
+    oi = new Oi1Joystick();
+    // oi = new Oi1Xbox();
     driveTrain = new DriveTrain();
     wristMotor = new WristMotor();
     intakeOutakeMotor = new IntakeOutakeMotor();

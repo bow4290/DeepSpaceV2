@@ -12,50 +12,34 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
 
-public class OI {
-  public Joystick rightJoystick;
-  //private JoystickButton rightJoystickButton1;
-  //private JoystickButton rightJoystickButton2;
-  //private JoystickButton rightJoystickButton3;
-  //private JoystickButton rightJoystickButton4;
-  //private JoystickButton rightJoystickButton5;
-  //private JoystickButton rightJoystickButton6;
-  //private JoystickButton rightJoystickButton7;
-  //private JoystickButton rightJoystickButton8;  
-
-  // public Joystick leftJoystick;
-  // private JoystickButton leftJoystickButton1;
-  // private JoystickButton leftJoystickButton2;
-  // private JoystickButton leftJoystickButton3;
-  // private JoystickButton leftJoystickButton4;
-  // private JoystickButton leftJoystickButton5;
-  // private JoystickButton leftJoystickButton6;
-  // private JoystickButton leftJoystickButton7;
-  // private JoystickButton leftJoystickButton8;
-
+public abstract class OI {
+  public Joystick mainJoystick;
+  public Joystick secondJoystick;
   public XboxController mainXboxController;
-  private JoystickButton mainXboxControllerButton1;
-  private JoystickButton mainXboxControllerButton2;
-  private JoystickButton mainXboxControllerButton3;
-  private JoystickButton mainXboxControllerButton4;
-  // private JoystickButton mainXboxControllerButton5;
-  // private JoystickButton mainXboxControllerButton6;
-  // private JoystickButton mainXboxControllerButton7;
-  // private JoystickButton mainXboxControllerButton8;
-  // private JoystickButton mainXboxControllerButton9;
-
-  // public XboxController secondaryXboxController;
-  // private JoystickButton secondaryXboxControllerButton1;
-  // private JoystickButton secondaryXboxControllerButton2;
-  // private JoystickButton secondaryXboxControllerButton3;
-  // private JoystickButton secondaryXboxControllerButton4;
-  // private JoystickButton secondaryXboxControllerButton5;
-  // private JoystickButton secondaryXboxControllerButton6;
-  // private JoystickButton secondaryXboxControllerButton7;
-  // private JoystickButton secondaryXboxControllerButton8;
-  // private JoystickButton secondaryXboxControllerButton9;
+  public XboxController secondXboxController;
+  private JoystickButton button1;
+  private JoystickButton button2;
+  private JoystickButton button3;
+  private JoystickButton button4;
+  private JoystickButton button5;
+  private JoystickButton button6;
+  private JoystickButton button7;
+  private JoystickButton button8;
+  private JoystickButton button9;
+  private JoystickButton button10;
+  private JoystickButton button11;
+  private JoystickButton button12;
+  private JoystickButton button13;
+  private JoystickButton button14;
+  private JoystickButton button15;
+  private JoystickButton button16;
+  private JoystickButton button17;
+  private JoystickButton button18;
+  private JoystickButton button19;
+  
 
   public OI() {
+
     //rightJoystick = new Joystick(0);
     // rightJoystickButton1 = new JoystickButton(rightJoystick, 1);
     // rightJoystickButton2 = new JoystickButton(rightJoystick, 2);
@@ -128,7 +112,7 @@ public class OI {
     // mainXboxControllerButton3.whileHeld(new MoveWristToAngle(1));
     // mainXboxControllerButton4.whileHeld(new MoveWristToAngle(0));
 
-    // mainXboxControllerButton5.whileHeld(new PickUpBall());
+    button1.whileHeld(new PickUpBall());
     // mainXboxControllerButton6.whileHeld(new ThrowBall());
     
     // mainXboxControllerButton7.whileHeld(new ElevatorUp());

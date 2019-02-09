@@ -13,8 +13,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
 
 public class Oi1Xbox {
-  public Joystick rightJoystick;
-
   public XboxController mainXboxController;
   private JoystickButton mainXboxControllerButton1;
   private JoystickButton mainXboxControllerButton2;
@@ -28,8 +26,7 @@ public class Oi1Xbox {
   private JoystickButton mainXboxControllerButton10;
 
   
-  public Oi1Xbox() {
-    
+  public Oi1Xbox() {    
     mainXboxController = new XboxController(0);
     mainXboxControllerButton1 = new JoystickButton(mainXboxController, 1);
     mainXboxControllerButton2 = new JoystickButton(mainXboxController, 2);
