@@ -72,7 +72,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
-    driveTrain.takeJoystickInputs(oi.rightJoystick);
+    driveTrain.takeJoystickInputs(oi.mainXboxController);
     
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
