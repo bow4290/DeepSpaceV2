@@ -108,7 +108,7 @@ public class OI {
     // rightJoystickButton1.whenPressed(new TurnWithGyroCommand(90));
     // rightJoystickButton1.whenPressed(new StartVisionCommand());
     
-    rightJoystickButton1.whileHeld(new MoveWristToAngle(1));
+    // rightJoystickButton1.whileHeld(new MoveWristToAngle(1));
     rightJoystickButton2.whileHeld(new MoveWristToAngle(0));
 
     rightJoystickButton7.whileHeld(new PickUpBall());
@@ -120,7 +120,9 @@ public class OI {
     rightJoystickButton3.whileHeld(new ElbowUp());
     rightJoystickButton4.whileHeld(new ElbowDown());
 
-
+    // rightJoystickButton1.toggleWhenPressed(new DriveWithJoysticks());
+    rightJoystickButton1.cancelWhenPressed(new DriveWithJoysticks());
+    //rightJoystickButton1.whenPressed();
 
     // mainXboxControllerButton1.whenPressed(new TurnWithGyroCommand(90));
     // mainXboxControllerButton2.whenPressed(new StartVisionCommand());
