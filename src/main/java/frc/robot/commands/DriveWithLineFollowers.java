@@ -10,22 +10,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.subsystems.DriveTrain;
 
 public class DriveWithLineFollowers extends Command {
   
-  // public DriveWithJoysticks() {
-  //   requires(Robot.driveTrain);
-  // }
-
-  public DriveWithLineFollowers() {
-    // Use requires() here to declare subsystem dependencies
-    requires(Robot.driveTrain);
-  }
+  private DriveTrain driveTrain;
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
+    driveTrain = new DriveTrain();
+    requires(driveTrain);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -42,28 +37,28 @@ public class DriveWithLineFollowers extends Command {
     
     switch(line){
       case "100":
-        Robot.driveTrain.turnRight();
+        driveTrain.turnRight();
         break;
       case "110":
-        Robot.driveTrain.turnRight();
+        driveTrain.turnRight();
         break;
       case "111":
-        Robot.driveTrain.stop();
+        driveTrain.stop();
         break;
       case "101":
-        Robot.driveTrain.stop();
+        driveTrain.stop();
         break;
       case "010":
-        Robot.driveTrain.driveStraight();
+        driveTrain.driveStraight();
         break;
       case "011":
-        Robot.driveTrain.turnLeft();
+        driveTrain.turnLeft();
         break;
       case "001":
-        Robot.driveTrain.turnLeft();
+        driveTrain.turnLeft();
         break;
       case "000":
-        Robot.driveTrain.driveStraight();
+        driveTrain.driveStraight();
         break;
     }
   }

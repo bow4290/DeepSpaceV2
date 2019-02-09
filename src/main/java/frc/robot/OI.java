@@ -121,6 +121,8 @@ public class OI {
     rightJoystickButton4.whileHeld(new ElbowDown());
 
     rightJoystickButton1.whileHeld(new DriveWithLineFollowers());
+    rightJoystickButton1.whenReleased(new DriveWithJoysticks());
+    
 
 
 
