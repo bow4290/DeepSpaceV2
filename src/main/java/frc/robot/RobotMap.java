@@ -42,11 +42,6 @@ public class RobotMap {
   private static SpeedController driveTrainMotorLeftBack;
   private static SpeedControllerGroup driveTrainLeft;
 
-  private static SpeedController elevator;
-  private static SpeedController elbow;
-  private static SpeedController wrist;
-  private static SpeedController finger;
-  
   public static ADXRS450_Gyro turningGyro;
   public static Encoder wristEncoder;
   public static Encoder elbowEncoder;
@@ -80,6 +75,7 @@ public class RobotMap {
     elevatorMotor = new VictorSP(4);
 
     wristEncoder = new Encoder(2,3);
+    wristEncoder.reset();
 
     lineFollowerRight = new AnalogInput(0);
     lineFollowerCenter = new AnalogInput(1);

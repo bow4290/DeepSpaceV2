@@ -22,7 +22,7 @@ public class DriveTrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    //setDefaultCommand(new DriveWithJoysticks());
+    setDefaultCommand(new DriveWithJoysticks());
   }
 
   public void takeJoystickInputs(Joystick joystick){
@@ -30,14 +30,14 @@ public class DriveTrain extends Subsystem {
   }
 
   public void driveStraight(){
-    // RobotMap.driveTrainBase.arcadeDrive(.3, 0);
+    RobotMap.driveTrainBase.arcadeDrive(-.6, 0);
   }
   public void turnLeft(){
-    // RobotMap.driveTrainBase.arcadeDrive(.3, -0.3);
+    RobotMap.driveTrainBase.arcadeDrive(0, -0.8);
   }
 
   public void turnRight(){
-    // RobotMap.driveTrainBase.arcadeDrive(.3, 0.3);
+    RobotMap.driveTrainBase.arcadeDrive(0, 0.8);
   }
 
   public void stop(){

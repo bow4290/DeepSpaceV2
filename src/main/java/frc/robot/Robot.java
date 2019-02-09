@@ -47,8 +47,7 @@ public class Robot extends TimedRobot {
   
   @Override
   public void robotInit() {
-    RobotMap.init();
-    oi = new OI();
+    RobotMap.init();    
     driveTrain = new DriveTrain();
     wristMotor = new WristMotor();
     intakeOutakeMotor = new IntakeOutakeMotor();
@@ -57,6 +56,18 @@ public class Robot extends TimedRobot {
     NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");
     RobotMap.wristEncoder.reset();  
+    oi = new OI();
+    double lineFollowerLeftValue = RobotMap.lineFollowerLeft.getVoltage();
+    double lineFollowerCenterValue = RobotMap.lineFollowerCenter.getVoltage();
+    double lineFollowerRightValue = RobotMap.lineFollowerRight.getVoltage();
+    nTable.putNumber("Line Follower Left Value", lineFollowerLeftValue);
+    nTable.putNumber("Line Follower Center Value", lineFollowerCenterValue);
+    nTable.putNumber("Line Follower Right Value", lineFollowerRightValue);
+
+
+    double gyroAngle = RobotMap.turningGyro.getAngle();
+    nTable.putNumber("Current Gyro Value", gyroAngle);
+
   }
 
   

@@ -120,6 +120,7 @@ public class OI {
     rightJoystickButton3.whileHeld(new ElbowUp());
     rightJoystickButton4.whileHeld(new ElbowDown());
 
+    rightJoystickButton1.cancelWhenActive(new DriveWithJoysticks());
     rightJoystickButton1.whileHeld(new DriveWithLineFollowers());
     rightJoystickButton1.whenReleased(new DriveWithJoysticks());
     

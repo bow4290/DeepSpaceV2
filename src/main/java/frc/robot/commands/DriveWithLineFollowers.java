@@ -13,14 +13,11 @@ import frc.robot.RobotMap;
 import frc.robot.subsystems.DriveTrain;
 
 public class DriveWithLineFollowers extends Command {
-  
-  private DriveTrain driveTrain;
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    driveTrain = new DriveTrain();
-    requires(driveTrain);
+    // requires(Robot.driveTrain);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -37,28 +34,28 @@ public class DriveWithLineFollowers extends Command {
     
     switch(line){
       case "100":
-        driveTrain.turnRight();
+        Robot.driveTrain.turnRight();
         break;
       case "110":
-        driveTrain.turnRight();
+      Robot.driveTrain.turnRight();
         break;
       case "111":
-        driveTrain.stop();
+      Robot.driveTrain.stop();
         break;
       case "101":
-        driveTrain.stop();
+      Robot.driveTrain.stop();
         break;
       case "010":
-        driveTrain.driveStraight();
+      Robot.driveTrain.driveStraight();
         break;
       case "011":
-        driveTrain.turnLeft();
+      Robot.driveTrain.turnLeft();
         break;
       case "001":
-        driveTrain.turnLeft();
+      Robot.driveTrain.turnLeft();
         break;
       case "000":
-        driveTrain.driveStraight();
+      Robot.driveTrain.turnRight();
         break;
     }
   }
