@@ -19,19 +19,36 @@ public class DriveTrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
+  private double oldValue;
+  private static double speedReductionFactor = .999;
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     setDefaultCommand(new DriveWithJoysticks());
+    oldValue = 0.0;
   }
 
   public void takeJoystickInputs(Joystick joystick){
-    RobotMap.driveTrainBase.arcadeDrive(joystick.getY(), joystick.getX(), true);
+    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(joystick.getY()), joystick.getX(), true);
+  }
+
+  private double speedBuffer(double newValue) {
+	  if(Math.abs(newValue)<.5 && Math.abs(oldValue)>.5){
+      // System.out.println("New Value: " + newValue + "Old Value: " + oldValue);
+      oldValue = Math.abs(oldValue*speedReductionFactor);
+      return oldValue;
+    }
+    else{
+      oldValue = Math.abs(newValue);
+      return newValue;
+    }
   }
 
   public void driveStraight(){
     RobotMap.driveTrainBase.arcadeDrive(-.6, 0);
   }
+  
   public void turnLeft(){
     RobotMap.driveTrainBase.arcadeDrive(0, -0.8);
   }
