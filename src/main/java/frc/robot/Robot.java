@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -43,6 +44,7 @@ public class Robot extends TimedRobot {
   public static ElevatorMotor elevatorMotor;
   public static DigitalInput lineFollower;
   public static ElbowMotor elbowMotor;
+  ADXRS450_Gyro gyroTest;
 
   
   @Override
@@ -64,9 +66,9 @@ public class Robot extends TimedRobot {
     nTable.putNumber("Line Follower Center Value", lineFollowerCenterValue);
     nTable.putNumber("Line Follower Right Value", lineFollowerRightValue);
 
-
-    double gyroAngle = RobotMap.turningGyro.getAngle();
-    nTable.putNumber("Current Gyro Value", gyroAngle);
+     gyroTest = new ADXRS450_Gyro();
+    // double gyroAngle = RobotMap.turningGyro.getAngle();
+    // nTable.putNumber("Current Gyro Value", gyroAngle);
 
   }
 
@@ -85,8 +87,8 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     //driveTrain.takeJoystickInputs(oi.rightJoystick);
     
-    double gyroAngle = RobotMap.turningGyro.getAngle();
-    nTable.putNumber("Current Gyro Value", gyroAngle);
+    // double gyroAngle = RobotMap.turningGyro.getAngle();
+    // nTable.putNumber("Current Gyro Value", gyroAngle);
 
     double lineFollowerLeftValue = RobotMap.lineFollowerLeft.getVoltage();
     double lineFollowerCenterValue = RobotMap.lineFollowerCenter.getVoltage();
@@ -99,7 +101,7 @@ public class Robot extends TimedRobot {
     int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
     nTable.putNumber("Wrist Value", wristEncoderValue);
     nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
-   
+    SmartDashboard.putNumber("Gyro Value: ", gyroTest.getAngle());
   }
 
   @Override

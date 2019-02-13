@@ -42,7 +42,7 @@ public class RobotMap {
   private static SpeedController driveTrainMotorLeftBack;
   private static SpeedControllerGroup driveTrainLeft;
 
-  public static ADXRS450_Gyro turningGyro;
+  
   public static Encoder wristEncoder;
   public static Encoder elbowEncoder;
 
@@ -81,7 +81,6 @@ public class RobotMap {
     lineFollowerCenter = new AnalogInput(1);
     lineFollowerLeft = new AnalogInput(2);
 
-    turningGyro = new ADXRS450_Gyro();
-    turningGyro.reset();
+    
   }
 }

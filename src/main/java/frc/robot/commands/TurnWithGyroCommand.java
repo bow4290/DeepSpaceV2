@@ -1,57 +1,57 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
+// /*----------------------------------------------------------------------------*/
+// /* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+// /* Open Source Software - may be modified and shared by FRC teams. The code   */
+// /* must be accompanied by the FIRST BSD license file in the root directory of */
+// /* the project.                                                               */
+// /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+// package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
+// import edu.wpi.first.wpilibj.command.Command;
+// import frc.robot.Robot;
+// import frc.robot.RobotMap;
 
-public class TurnWithGyroCommand extends Command {
-  private double turnAngle = 0.0;
-  public TurnWithGyroCommand(double turnAngle) {
-    this.turnAngle = turnAngle;
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-  }
+// public class TurnWithGyroCommand extends Command {
+//   private double turnAngle = 0.0;
+//   public TurnWithGyroCommand(double turnAngle) {
+//     this.turnAngle = turnAngle;
+//     // Use requires() here to declare subsystem dependencies
+//     // eg. requires(chassis);
+//   }
 
-  // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {
-    RobotMap.turningGyro.reset();
-  }
+//   // Called just before this Command runs the first time
+//   @Override
+//   protected void initialize() {
+//     RobotMap.turningGyro.reset();
+//   }
 
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
-    if (turnAngle>0.0){
-    Robot.driveTrain.turnRight();
-    }
-    else{
-      Robot.driveTrain.turnLeft();
-    }
+//   // Called repeatedly when this Command is scheduled to run
+//   @Override
+//   protected void execute() {
+//     if (turnAngle>0.0){
+//     Robot.driveTrain.turnRight();
+//     }
+//     else{
+//       Robot.driveTrain.turnLeft();
+//     }
     
-  }
+//   }
 
-  // Make this return true when this Command no longer needs to run execute()
-  @Override
-  protected boolean isFinished() {
-    // return RobotMap.turningGyro.getAngle() > this.turnAngle;
-    return Math.abs(RobotMap.turningGyro.getAngle())>=Math.abs(turnAngle);
-  }
+//   // Make this return true when this Command no longer needs to run execute()
+//   @Override
+//   protected boolean isFinished() {
+//     // return RobotMap.turningGyro.getAngle() > this.turnAngle;
+//     return Math.abs(RobotMap.turningGyro.getAngle())>=Math.abs(turnAngle);
+//   }
 
-  // Called once after isFinished returns true
-  @Override
-  protected void end() {
-  }
+//   // Called once after isFinished returns true
+//   @Override
+//   protected void end() {
+//   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
-}
+//   // Called when another command which requires one or more of the same
+//   // subsystems is scheduled to run
+//   @Override
+//   protected void interrupted() {
+//   }
+// }
