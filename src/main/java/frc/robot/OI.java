@@ -7,13 +7,13 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.*;
+// import edu.wpi.first.wpilibj.Joystick;
+// import edu.wpi.first.wpilibj.XboxController;
+// import edu.wpi.first.wpilibj.buttons.JoystickButton;
+// import frc.robot.commands.*;
 
-public class OI {
-  public Joystick rightJoystick;
+// public class OI {
+  // public Joystick rightJoystick;
   //private JoystickButton rightJoystickButton1;
   //private JoystickButton rightJoystickButton2;
   //private JoystickButton rightJoystickButton3;
@@ -33,11 +33,11 @@ public class OI {
   // private JoystickButton leftJoystickButton7;
   // private JoystickButton leftJoystickButton8;
 
-  public XboxController mainXboxController;
-  private JoystickButton mainXboxControllerButton1;
-  private JoystickButton mainXboxControllerButton2;
-  private JoystickButton mainXboxControllerButton3;
-  private JoystickButton mainXboxControllerButton4;
+  // public XboxController mainXboxController;
+  // private JoystickButton mainXboxControllerButton1;
+  // private JoystickButton mainXboxControllerButton2;
+  // private JoystickButton mainXboxControllerButton3;
+  // private JoystickButton mainXboxControllerButton4;
   // private JoystickButton mainXboxControllerButton5;
   // private JoystickButton mainXboxControllerButton6;
   // private JoystickButton mainXboxControllerButton7;
@@ -55,7 +55,7 @@ public class OI {
   // private JoystickButton secondaryXboxControllerButton8;
   // private JoystickButton secondaryXboxControllerButton9;
 
-  public OI() {
+  // public OI() {
     //rightJoystick = new Joystick(0);
     // rightJoystickButton1 = new JoystickButton(rightJoystick, 1);
     // rightJoystickButton2 = new JoystickButton(rightJoystick, 2);
@@ -76,11 +76,11 @@ public class OI {
     // leftJoystickButton7 = new JoystickButton(leftJoystick, 6);
     // leftJoystickButton8 = new JoystickButton(leftJoystick, 7);    
     
-    mainXboxController = new XboxController(0);
-    mainXboxControllerButton1 = new JoystickButton(mainXboxController, 1);
-    mainXboxControllerButton2 = new JoystickButton(mainXboxController, 2);
-    mainXboxControllerButton3 = new JoystickButton(mainXboxController, 3);
-    mainXboxControllerButton4 = new JoystickButton(mainXboxController, 4);
+    // mainXboxController = new XboxController(0);
+    // mainXboxControllerButton1 = new JoystickButton(mainXboxController, 1);
+    // mainXboxControllerButton2 = new JoystickButton(mainXboxController, 2);
+    // mainXboxControllerButton3 = new JoystickButton(mainXboxController, 3);
+    // mainXboxControllerButton4 = new JoystickButton(mainXboxController, 4);
     // mainXboxControllerButton5 = new JoystickButton(mainXboxController, 5);
     // mainXboxControllerButton6 = new JoystickButton(mainXboxController, 6);
     // mainXboxControllerButton7 = new JoystickButton(mainXboxController, 7);
@@ -139,5 +139,5 @@ public class OI {
 
 
 
-  }
-}
+//   }
+// }

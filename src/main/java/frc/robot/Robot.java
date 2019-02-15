@@ -35,20 +35,25 @@ import frc.robot.subsystems.WristMotor;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI oi;
+  // public static OI oi;
   public static DriveTrain driveTrain;
   public static WristMotor wristMotor;
   private NetworkTable nTable;
+  public static Oi1Xbox oi1X;
+  public static Oi1Joystick oi1J;
   public static IntakeOutakeMotor intakeOutakeMotor;
   public static ElevatorMotor elevatorMotor;
   public static DigitalInput lineFollower;
   public static ElbowMotor elbowMotor;
+  //public static Object oi;
 
   
   @Override
   public void robotInit() {
     RobotMap.init();
-    oi = new OI();
+    // oi = new OI();
+    oi1X = new Oi1Xbox();
+    // oi1J = new Oi1Joystick();
     driveTrain = new DriveTrain();
     wristMotor = new WristMotor();
     intakeOutakeMotor = new IntakeOutakeMotor();
@@ -72,7 +77,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
-    driveTrain.takeJoystickInputs(oi.mainXboxController);
+    driveTrain.takeJoystickInputs(oi1X.mainXboxController);
     
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
