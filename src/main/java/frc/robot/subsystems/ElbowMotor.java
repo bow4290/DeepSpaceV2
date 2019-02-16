@@ -29,15 +29,15 @@ public class ElbowMotor extends Subsystem {
   }
 
   public void moveElbowUp(){
-    RobotMap.elbowMotor.set(Robot.oi.leftJoystick.getX());
+    RobotMap.elbowMotor.set(.3*(Robot.oi.leftJoystick.getX()));
   }
 
   public void moveElbowDown(){
-    RobotMap.elbowMotor.set(Robot.oi.leftJoystick.getX());
+    RobotMap.elbowMotor.set(.3*(Robot.oi.leftJoystick.getX()));
   }
 
   public void stopElbow(){
-    RobotMap.elbowMotor.set(0.0);
+    RobotMap.elbowMotor.set(0.1);
   }
 
 

@@ -11,9 +11,11 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveWithJoysticks;
 import frc.robot.commands.MoveWristToAngle;
+import frc.robot.OI;
 
 /**
  * Add your docs here.
@@ -29,11 +31,11 @@ public class WristMotor extends Subsystem {
   }
 
   public void moveWristUp(){
-    RobotMap.wristMotor.set(.45);
+    RobotMap.wristMotor.set(Math.abs(Robot.oi.leftJoystick.getY()));
   }
 
   public void moveWristDown(){
-    RobotMap.wristMotor.set(-0.25);
+    RobotMap.wristMotor.set(-1*(Math.abs(Robot.oi.leftJoystick.getY())));
   }
 
   public void stopWrist(){
