@@ -32,7 +32,9 @@ import frc.robot.subsystems.ElbowMotor;
 public class RobotMap {
   
   public static DifferentialDrive driveTrainBase;
-  // private static DoubleSolenoid gearShiftSolenoid;
+  public static DoubleSolenoid gearShiftSolenoid;
+  public static DoubleSolenoid hatchPanelSolenoid;
+
 
   private static SpeedController driveTrainMotorRightFront; 
   private static SpeedController driveTrainMotorRightBack;
@@ -61,6 +63,7 @@ public class RobotMap {
   public static AnalogInput lineFollowerLeft;
   public static AnalogInput lineFollowerCenter;
   public static AnalogInput lineFollowerRight;
+
   
   
 
@@ -73,7 +76,8 @@ public class RobotMap {
     driveTrainMotorLeftBack = new Spark(3);
     driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
 
-    // gearShiftSolenoid = new DoubleSolenoid(0, 1);
+    gearShiftSolenoid = new DoubleSolenoid(4, 5);
+    hatchPanelSolenoid = new DoubleSolenoid(6, 7);
     
     driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
     
