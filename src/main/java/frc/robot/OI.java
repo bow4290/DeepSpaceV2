@@ -23,15 +23,15 @@ public class OI {
   private JoystickButton rightJoystickButton7;
   private JoystickButton rightJoystickButton8;  
 
-  // public Joystick leftJoystick;
-  // private JoystickButton leftJoystickButton1;
-  // private JoystickButton leftJoystickButton2;
-  // private JoystickButton leftJoystickButton3;
-  // private JoystickButton leftJoystickButton4;
-  // private JoystickButton leftJoystickButton5;
-  // private JoystickButton leftJoystickButton6;
-  // private JoystickButton leftJoystickButton7;
-  // private JoystickButton leftJoystickButton8;
+  public Joystick leftJoystick;
+  private JoystickButton leftJoystickButton1;
+  private JoystickButton leftJoystickButton2;
+  private JoystickButton leftJoystickButton3;
+  private JoystickButton leftJoystickButton4;
+  private JoystickButton leftJoystickButton5;
+  private JoystickButton leftJoystickButton6;
+  private JoystickButton leftJoystickButton7;
+  private JoystickButton leftJoystickButton8;
 
   // public XboxController mainXboxController;
   // private JoystickButton mainXboxControllerButton1;
@@ -66,15 +66,15 @@ public class OI {
     rightJoystickButton7 = new JoystickButton(rightJoystick, 7);
     rightJoystickButton8 = new JoystickButton(rightJoystick, 8);
 
-    // leftJoystick = new Joystick(1);
-    // leftJoystickButton1 = new JoystickButton(leftJoystick, 0);
-    // leftJoystickButton2 = new JoystickButton(leftJoystick, 1);
-    // leftJoystickButton3 = new JoystickButton(leftJoystick, 2);
-    // leftJoystickButton4 = new JoystickButton(leftJoystick, 3);
-    // leftJoystickButton5 = new JoystickButton(leftJoystick, 4);
-    // leftJoystickButton6 = new JoystickButton(leftJoystick, 5);
-    // leftJoystickButton7 = new JoystickButton(leftJoystick, 6);
-    // leftJoystickButton8 = new JoystickButton(leftJoystick, 7);    
+    leftJoystick = new Joystick(1);
+    leftJoystickButton1 = new JoystickButton(leftJoystick, 1);
+    leftJoystickButton2 = new JoystickButton(leftJoystick, 2);
+    leftJoystickButton3 = new JoystickButton(leftJoystick, 3);
+    leftJoystickButton4 = new JoystickButton(leftJoystick, 4);
+    leftJoystickButton5 = new JoystickButton(leftJoystick, 5);
+    leftJoystickButton6 = new JoystickButton(leftJoystick, 6);
+    leftJoystickButton7 = new JoystickButton(leftJoystick, 7);
+    leftJoystickButton8 = new JoystickButton(leftJoystick, 8);    
     
     // mainXboxController = new XboxController(0);
     // mainXboxControllerButton1 = new JoystickButton(mainXboxController, 1);
@@ -117,14 +117,15 @@ public class OI {
     rightJoystickButton5.whileHeld(new ElevatorUp());
     rightJoystickButton6.whileHeld(new ElevatorDown());
 
-    rightJoystickButton3.whileHeld(new ElbowUp());
-    rightJoystickButton4.whileHeld(new ElbowDown());
+    // rightJoystickButton3.whileHeld(new ElbowUp());
+    // rightJoystickButton4.whileHeld(new ElbowDown());
 
     rightJoystickButton1.cancelWhenActive(new DriveWithJoysticks());
     rightJoystickButton1.whileHeld(new DriveWithLineFollowers());
     rightJoystickButton1.whenReleased(new DriveWithJoysticks());
     
-
+    leftJoystickButton3.whileHeld(new ElbowUp());
+    leftJoystickButton4.whileHeld(new ElbowDown());
 
 
     // mainXboxControllerButton1.whenPressed(new TurnWithGyroCommand(90));

@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.MoveWristToAngle;
+import frc.robot.OI;
+import frc.robot.Robot;
 
 /**
  * Add your docs here.
@@ -27,11 +29,11 @@ public class ElbowMotor extends Subsystem {
   }
 
   public void moveElbowUp(){
-    RobotMap.elbowMotor.set(1);
+    RobotMap.elbowMotor.set(Robot.oi.leftJoystick.getX());
   }
 
   public void moveElbowDown(){
-    RobotMap.elbowMotor.set(-.5);
+    RobotMap.elbowMotor.set(Robot.oi.leftJoystick.getX());
   }
 
   public void stopElbow(){
