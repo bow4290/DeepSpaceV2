@@ -29,11 +29,24 @@ public class ElbowMotor extends Subsystem {
   }
 
   public void moveElbowUp(){
-    RobotMap.elbowMotor.set(.3*(Robot.oi.leftJoystick.getX()));
+    if(!RobotMap.elbowMotorHighLimit.get()){
+      RobotMap.elbowMotor.set(.3*(Robot.oi.leftJoystick.getX()));
+    }
+    else{
+      stopElbow();
+    }
+    
+    
   }
 
   public void moveElbowDown(){
-    RobotMap.elbowMotor.set(.3*(Robot.oi.leftJoystick.getX()));
+    if(!RobotMap.elbowMotorLowLimit.get()){
+      RobotMap.elbowMotor.set(.3*(Robot.oi.leftJoystick.getX()));
+    }
+    else{
+      stopElbow();
+    }
+    
   }
 
   public void stopElbow(){

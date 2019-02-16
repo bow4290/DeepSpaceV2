@@ -32,7 +32,7 @@ import frc.robot.subsystems.ElbowMotor;
 public class RobotMap {
   
   public static DifferentialDrive driveTrainBase;
-  private static DoubleSolenoid gearShiftSolenoid;
+  // private static DoubleSolenoid gearShiftSolenoid;
 
   private static SpeedController driveTrainMotorRightFront; 
   private static SpeedController driveTrainMotorRightBack;
@@ -41,20 +41,28 @@ public class RobotMap {
   private static SpeedController driveTrainMotorLeftFront;
   private static SpeedController driveTrainMotorLeftBack;
   private static SpeedControllerGroup driveTrainLeft;
-
   
   public static Encoder wristEncoder;
   public static Encoder elbowEncoder;
 
   // public static Jaguar elbow;
-  public static Talon wristMotor;
-  public static Talon fingerMotor;
-  public static VictorSP elevatorMotor;
-  public static Jaguar elbowMotor;
+  public static Jaguar wristMotor;
+  public static DigitalInput wristMotorHighLimit;
+  public static DigitalInput wristMotorLowLimit;
 
+  public static Talon fingerMotor;
+  
+  public static VictorSP elevatorMotor;
+
+  public static Talon elbowMotor;
+  public static DigitalInput elbowMotorHighLimit;
+  public static DigitalInput elbowMotorLowLimit;
+  
   public static AnalogInput lineFollowerLeft;
   public static AnalogInput lineFollowerCenter;
-  public static AnalogInput lineFollowerRight;  
+  public static AnalogInput lineFollowerRight;
+  
+  
 
   public static void init(){
     driveTrainMotorRightFront = new Spark(0);    
@@ -65,22 +73,26 @@ public class RobotMap {
     driveTrainMotorLeftBack = new Spark(3);
     driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
 
-    gearShiftSolenoid = new DoubleSolenoid(0, 1);
+    // gearShiftSolenoid = new DoubleSolenoid(0, 1);
     
     driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
     
-    elbowMotor = new Jaguar(5);
-    wristMotor = new Talon(6);
+    elbowMotor = new Talon(6);
+    elbowMotorHighLimit = new DigitalInput(0);
+    elbowMotorLowLimit = new DigitalInput(1);
+
+    wristMotor = new Jaguar(5);
+    wristMotorHighLimit = new DigitalInput(2);
+    wristMotorLowLimit = new DigitalInput(3);
+
     fingerMotor = new Talon(7);
     elevatorMotor = new VictorSP(4);
 
-    wristEncoder = new Encoder(2,3);
-    wristEncoder.reset();
+    // wristEncoder = new Encoder(2,3);
+    // wristEncoder.reset();
 
     lineFollowerRight = new AnalogInput(0);
     lineFollowerCenter = new AnalogInput(1);
     lineFollowerLeft = new AnalogInput(2);
-
-    
   }
 }

@@ -44,6 +44,7 @@ public class Robot extends TimedRobot {
   public static ElevatorMotor elevatorMotor;
   public static DigitalInput lineFollower;
   public static ElbowMotor elbowMotor;
+  public static DigitalInput elbowMotorHighLimit;
   ADXRS450_Gyro gyroTest;
 
   
@@ -55,9 +56,10 @@ public class Robot extends TimedRobot {
     intakeOutakeMotor = new IntakeOutakeMotor();
     elevatorMotor = new ElevatorMotor();
     elbowMotor = new ElbowMotor();
+    // elbowMotorHighLimit = new DigitalInput(0);
     NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");
-    RobotMap.wristEncoder.reset();  
+    // RobotMap.wristEncoder.reset();  
     oi = new OI();
     double lineFollowerLeftValue = RobotMap.lineFollowerLeft.getVoltage();
     double lineFollowerCenterValue = RobotMap.lineFollowerCenter.getVoltage();
@@ -65,6 +67,7 @@ public class Robot extends TimedRobot {
     nTable.putNumber("Line Follower Left Value", lineFollowerLeftValue);
     nTable.putNumber("Line Follower Center Value", lineFollowerCenterValue);
     nTable.putNumber("Line Follower Right Value", lineFollowerRightValue);
+    SmartDashboard.putBoolean("Limit Switch", RobotMap.wristMotorHighLimit.get());
 
      gyroTest = new ADXRS450_Gyro();
     // double gyroAngle = RobotMap.turningGyro.getAngle();
@@ -97,11 +100,13 @@ public class Robot extends TimedRobot {
     nTable.putNumber("Line Follower Center Value", lineFollowerCenterValue);
     nTable.putNumber("Line Follower Right Value", lineFollowerRightValue);
 
-    int wristEncoderValue = RobotMap.wristEncoder.get();
-    int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
-    nTable.putNumber("Wrist Value", wristEncoderValue);
-    nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
+    // int wristEncoderValue = RobotMap.wristEncoder.get();
+    // int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
+    // nTable.putNumber("Wrist Value", wristEncoderValue);
+    // nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
     SmartDashboard.putNumber("Gyro Value: ", gyroTest.getAngle());
+    SmartDashboard.putBoolean("Limit Switch", RobotMap.wristMotorHighLimit.get());
+
   }
 
   @Override

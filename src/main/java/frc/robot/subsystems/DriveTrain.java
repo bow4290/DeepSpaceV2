@@ -31,7 +31,7 @@ public class DriveTrain extends Subsystem {
   }
 
   public void takeJoystickInputs(Joystick joystick){
-    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(joystick.getY(), 0.04), joystick.getX(), true);
+    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(joystick.getY(), 0.08), joystick.getX(), true);
   }
 
   private double speedBuffer(double newValue) {

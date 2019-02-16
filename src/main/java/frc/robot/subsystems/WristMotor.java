@@ -17,13 +17,14 @@ import frc.robot.commands.DriveWithJoysticks;
 import frc.robot.commands.MoveWristToAngle;
 import frc.robot.OI;
 
+
 /**
  * Add your docs here.
  */
 public class WristMotor extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
+  double maxValue = .5;
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -31,11 +32,21 @@ public class WristMotor extends Subsystem {
   }
 
   public void moveWristUp(){
-    RobotMap.wristMotor.set(Math.abs(Robot.oi.leftJoystick.getY()));
+    if(RobotMap.wristMotorHighLimit.get()){
+      RobotMap.wristMotor.set(maxValue*Math.abs(Robot.oi.leftJoystick.getY()));
+    }
+    else{
+      stopWrist();
+    }
   }
 
   public void moveWristDown(){
-    RobotMap.wristMotor.set(-1*(Math.abs(Robot.oi.leftJoystick.getY())));
+    if(RobotMap.wristMotorLowLimit.get()){
+      RobotMap.wristMotor.set(-maxValue*Math.abs(Robot.oi.leftJoystick.getY()));
+    }
+    else{
+      stopWrist();
+    }
   }
 
   public void stopWrist(){
