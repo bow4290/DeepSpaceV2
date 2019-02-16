@@ -21,6 +21,7 @@ public class DriveTrain extends Subsystem {
 
   private double oldValue;
   private static double speedReductionFactor = .999;
+  private double oldSpeed = 0.0;
 
   @Override
   public void initDefaultCommand() {
@@ -30,7 +31,7 @@ public class DriveTrain extends Subsystem {
   }
 
   public void takeJoystickInputs(Joystick joystick){
-    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(joystick.getY()), joystick.getX(), true);
+    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(joystick.getY(), 0.04), joystick.getX(), true);
   }
 
   private double speedBuffer(double newValue) {
@@ -44,6 +45,18 @@ public class DriveTrain extends Subsystem {
       return newValue;
     }
   }
+  public double speedBuffer(double joy, double perc) {
+		double addSpeed = Math.abs(oldSpeed) * perc;
+		if (Math.abs(joy - oldSpeed) < addSpeed + 0.01) {
+			oldSpeed = joy;
+		} else if (Math.abs(oldSpeed) < perc * 10 && Math.abs(joy) > 0.1) {
+			oldSpeed = perc * 10 * Math.signum(joy);
+//			oldSpeed += 0.01 * Math.signum(joy - oldSpeed);
+		} else {
+			oldSpeed += addSpeed * Math.signum(joy - oldSpeed);
+		}
+		return oldSpeed;
+	}
 
   public void driveStraight(){
     RobotMap.driveTrainBase.arcadeDrive(-.6, 0);
