@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -36,43 +35,33 @@ import frc.robot.subsystems.WristMotor;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI oi;
+  // public static OI oi;
   public static DriveTrain driveTrain;
   public static WristMotor wristMotor;
   private NetworkTable nTable;
+  public static Oi1Xbox oi1X;
+  public static Oi1Joystick oi1J;
   public static IntakeOutakeMotor intakeOutakeMotor;
   public static ElevatorMotor elevatorMotor;
   public static DigitalInput lineFollower;
   public static ElbowMotor elbowMotor;
-  public static DigitalInput elbowMotorHighLimit;
-  ADXRS450_Gyro gyroTest;
+  //public static Object oi;
 
   
   @Override
   public void robotInit() {
-    RobotMap.init();    
+    RobotMap.init();
+    // oi = new OI();
+    oi1X = new Oi1Xbox();
+    // oi1J = new Oi1Joystick();
     driveTrain = new DriveTrain();
     wristMotor = new WristMotor();
     intakeOutakeMotor = new IntakeOutakeMotor();
     elevatorMotor = new ElevatorMotor();
     elbowMotor = new ElbowMotor();
-    // elbowMotorHighLimit = new DigitalInput(0);
     NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");
-    // RobotMap.wristEncoder.reset();  
-    oi = new OI();
-    double lineFollowerLeftValue = RobotMap.lineFollowerLeft.getVoltage();
-    double lineFollowerCenterValue = RobotMap.lineFollowerCenter.getVoltage();
-    double lineFollowerRightValue = RobotMap.lineFollowerRight.getVoltage();
-    nTable.putNumber("Line Follower Left Value", lineFollowerLeftValue);
-    nTable.putNumber("Line Follower Center Value", lineFollowerCenterValue);
-    nTable.putNumber("Line Follower Right Value", lineFollowerRightValue);
-    SmartDashboard.putBoolean("Limit Switch", RobotMap.wristMotorHighLimit.get());
-
-     gyroTest = new ADXRS450_Gyro();
-    // double gyroAngle = RobotMap.turningGyro.getAngle();
-    // nTable.putNumber("Current Gyro Value", gyroAngle);
-
+    //RobotMap.wristEncoder.reset();  
   }
 
   
@@ -88,10 +77,10 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
-    //driveTrain.takeJoystickInputs(oi.rightJoystick);
+    driveTrain.takeJoystickInputs(oi1X.mainXboxController);
     
-    // double gyroAngle = RobotMap.turningGyro.getAngle();
-    // nTable.putNumber("Current Gyro Value", gyroAngle);
+    double gyroAngle = RobotMap.turningGyro.getAngle();
+    nTable.putNumber("Current Gyro Value", gyroAngle);
 
     double lineFollowerLeftValue = RobotMap.lineFollowerLeft.getVoltage();
     double lineFollowerCenterValue = RobotMap.lineFollowerCenter.getVoltage();
@@ -100,13 +89,11 @@ public class Robot extends TimedRobot {
     nTable.putNumber("Line Follower Center Value", lineFollowerCenterValue);
     nTable.putNumber("Line Follower Right Value", lineFollowerRightValue);
 
-    // int wristEncoderValue = RobotMap.wristEncoder.get();
-    // int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
-    // nTable.putNumber("Wrist Value", wristEncoderValue);
-    // nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
-    SmartDashboard.putNumber("Gyro Value: ", gyroTest.getAngle());
-    SmartDashboard.putBoolean("Limit Switch", RobotMap.wristMotorHighLimit.get());
-
+    int wristEncoderValue = RobotMap.wristEncoder.get();
+    int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
+    nTable.putNumber("Wrist Value", wristEncoderValue);
+    nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
+   
   }
 
   @Override
