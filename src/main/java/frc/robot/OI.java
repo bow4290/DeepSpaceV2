@@ -66,7 +66,7 @@ public class OI {
     rightJoystickButton7 = new JoystickButton(rightJoystick, 7);
     rightJoystickButton8 = new JoystickButton(rightJoystick, 8);
 
-    // leftJoystick = new Joystick(1);
+    leftJoystick = new Joystick(1);
     // leftJoystickButton1 = new JoystickButton(leftJoystick, 1);
     // leftJoystickButton2 = new JoystickButton(leftJoystick, 2);
     // leftJoystickButton3 = new JoystickButton(leftJoystick, 3);
