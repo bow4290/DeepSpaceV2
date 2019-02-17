@@ -35,25 +35,20 @@ import frc.robot.subsystems.WristMotor;
  * project.
  */
 public class Robot extends TimedRobot {
-  // public static OI oi;
   public static DriveTrain driveTrain;
   public static WristMotor wristMotor;
   private NetworkTable nTable;
-  public static Oi1Xbox oi1X;
-  public static Oi1Joystick oi1J;
+  public static OI oi;
   public static IntakeOutakeMotor intakeOutakeMotor;
   public static ElevatorMotor elevatorMotor;
   public static DigitalInput lineFollower;
   public static ElbowMotor elbowMotor;
-  //public static Object oi;
-
+  
   
   @Override
   public void robotInit() {
     RobotMap.init();
-    // oi = new OI();
-    oi1X = new Oi1Xbox();
-    // oi1J = new Oi1Joystick();
+    oi = new OI();
     driveTrain = new DriveTrain();
     wristMotor = new WristMotor();
     intakeOutakeMotor = new IntakeOutakeMotor();
@@ -62,6 +57,7 @@ public class Robot extends TimedRobot {
     NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");
     //RobotMap.wristEncoder.reset();  
+    // elbowMotor.testElbow();
   }
 
   
@@ -77,7 +73,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
-    driveTrain.takeJoystickInputs(oi1X.mainXboxController);
+    driveTrain.takeJoystickInputs(oi.rightJoystick);
     
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
@@ -89,10 +85,10 @@ public class Robot extends TimedRobot {
     nTable.putNumber("Line Follower Center Value", lineFollowerCenterValue);
     nTable.putNumber("Line Follower Right Value", lineFollowerRightValue);
 
-    int wristEncoderValue = RobotMap.wristEncoder.get();
-    int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
-    nTable.putNumber("Wrist Value", wristEncoderValue);
-    nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
+    // int wristEncoderValue = RobotMap.wristEncoder.get();
+    // int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
+    // nTable.putNumber("Wrist Value", wristEncoderValue);
+    // nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
    
   }
 

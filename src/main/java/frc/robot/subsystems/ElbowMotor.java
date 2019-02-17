@@ -29,8 +29,8 @@ public class ElbowMotor extends Subsystem {
   }
 
   public void moveElbowUp(){
-    if(!RobotMap.elbowMotorHighLimit.get()){
-      RobotMap.elbowMotor.set(.3*(Robot.oi.leftJoystick.getX()));
+    if(true){//!RobotMap.elbowMotorHighLimit.get()){
+      // RobotMap.elbowMotor.set(1);//*(Robot.oi.leftJoystick.getX()));
     }
     else{
       stopElbow();
@@ -40,14 +40,20 @@ public class ElbowMotor extends Subsystem {
   }
 
   public void moveElbowDown(){
-    if(!RobotMap.elbowMotorLowLimit.get()){
-      RobotMap.elbowMotor.set(.3*(Robot.oi.leftJoystick.getX()));
+    // if(!RobotMap.elbowMotorLowLimit.get()){
+    if(true){
+      // RobotMap.elbowMotor.set(1);//*(Robot.oi.leftJoystick.getX()));
     }
     else{
       stopElbow();
     }
     
   }
+
+  public void testElbow(){
+    RobotMap.elbowMotor.set(.5);
+  }
+
 
   public void stopElbow(){
     RobotMap.elbowMotor.set(0.1);

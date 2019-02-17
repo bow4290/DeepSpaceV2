@@ -66,15 +66,15 @@ public class OI {
     rightJoystickButton7 = new JoystickButton(rightJoystick, 7);
     rightJoystickButton8 = new JoystickButton(rightJoystick, 8);
 
-    leftJoystick = new Joystick(1);
-    leftJoystickButton1 = new JoystickButton(leftJoystick, 1);
-    leftJoystickButton2 = new JoystickButton(leftJoystick, 2);
-    leftJoystickButton3 = new JoystickButton(leftJoystick, 3);
-    leftJoystickButton4 = new JoystickButton(leftJoystick, 4);
-    leftJoystickButton5 = new JoystickButton(leftJoystick, 5);
-    leftJoystickButton6 = new JoystickButton(leftJoystick, 6);
-    leftJoystickButton7 = new JoystickButton(leftJoystick, 7);
-    leftJoystickButton8 = new JoystickButton(leftJoystick, 8);    
+    // leftJoystick = new Joystick(1);
+    // leftJoystickButton1 = new JoystickButton(leftJoystick, 1);
+    // leftJoystickButton2 = new JoystickButton(leftJoystick, 2);
+    // leftJoystickButton3 = new JoystickButton(leftJoystick, 3);
+    // leftJoystickButton4 = new JoystickButton(leftJoystick, 4);
+    // leftJoystickButton5 = new JoystickButton(leftJoystick, 5);
+    // leftJoystickButton6 = new JoystickButton(leftJoystick, 6);
+    // leftJoystickButton7 = new JoystickButton(leftJoystick, 7);
+    // leftJoystickButton8 = new JoystickButton(leftJoystick, 8);    
     
     // mainXboxController = new XboxController(0);
     // mainXboxControllerButton1 = new JoystickButton(mainXboxController, 1);
@@ -109,7 +109,15 @@ public class OI {
     // rightJoystickButton1.whenPressed(new StartVisionCommand());
     
     // rightJoystickButton1.whileHeld(new MoveWristToAngle(1));
-    rightJoystickButton2.whileHeld(new MoveWristToAngle(0));
+    // rightJoystickButton2.whileHeld(new MoveWristToAngle(0));
+
+    // rightJoystickButton1.whileHeld(new ElbowUp());
+    // rightJoystickButton1.cancelWhenActive(new DriveWithJoysticks());
+    // rightJoystickButton1.whenInactive(new DriveWithJoysticks());
+    // rightJoystickButton2.whileHeld(new ElbowDown());
+
+    rightJoystickButton1.whileHeld(new ElbowUp());
+    rightJoystickButton2.whileHeld(new ElbowDown());
 
     rightJoystickButton7.whileHeld(new PickUpBall());
     rightJoystickButton8.whileHeld(new ThrowBall());
@@ -120,15 +128,15 @@ public class OI {
     // rightJoystickButton3.whileHeld(new ElbowUp());
     // rightJoystickButton4.whileHeld(new ElbowDown());
 
-    rightJoystickButton1.cancelWhenActive(new DriveWithJoysticks());
-    rightJoystickButton1.whileHeld(new DriveWithLineFollowers());
-    rightJoystickButton1.whenReleased(new DriveWithJoysticks());
+    // rightJoystickButton1.cancelWhenActive(new DriveWithJoysticks());
+    // rightJoystickButton1.whileHeld(new DriveWithLineFollowers());
+    // rightJoystickButton1.whenReleased(new DriveWithJoysticks());
 
-    leftJoystickButton3.whileHeld(new ElbowUp());
-    leftJoystickButton4.whileHeld(new ElbowDown());
+    // leftJoystickButton3.whileHeld(new ElbowUp());
+    // leftJoystickButton4.whileHeld(new ElbowDown());
 
-    leftJoystickButton1.whileHeld(new WristUp());
-    leftJoystickButton2.whileHeld(new WristDown());
+    // leftJoystickButton1.whileHeld(new WristUp());
+    // leftJoystickButton2.whileHeld(new WristDown());
 
 
 

@@ -26,7 +26,7 @@ public class DriveTrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new DriveWithJoysticks());
+    // setDefaultCommand(new DriveWithJoysticks());
     oldValue = 0.0;
   }
 

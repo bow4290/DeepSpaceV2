@@ -28,6 +28,7 @@ public class ElbowUp extends Command {
   protected void execute() {
      
       Robot.elbowMotor.moveElbowUp();
+      // Robot.elbowMotor.testElbow();
     
   }
 
