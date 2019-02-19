@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveWithJoysticks;
 import frc.robot.commands.StartVisionCommand;
+import frc.robot.subsystems.ClimbMotor;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElbowMotor;
 import frc.robot.subsystems.ElevatorMotor;
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static IntakeOutakeMotor intakeOutakeMotor;
   public static ElevatorMotor elevatorMotor;
+  public static ClimbMotor climbMotor;
   public static DigitalInput lineFollower;
   public static ElbowMotor elbowMotor;
   
@@ -53,6 +55,7 @@ public class Robot extends TimedRobot {
     wristMotor = new WristMotor();
     intakeOutakeMotor = new IntakeOutakeMotor();
     elevatorMotor = new ElevatorMotor();
+    climbMotor = new ClimbMotor();
     elbowMotor = new ElbowMotor();
     NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");
