@@ -86,25 +86,25 @@ public class RobotMap {
     driveTrainLeftEncoder = new Encoder(1,2);
     driveTrainRightEncoder = new Encoder(3,4);
 
-    driveTrainMotorLeftFront = new Spark(0);
-    driveTrainMotorLeftBack = new Spark(1);
-    driveTrainMotorLeftMid = new Spark(2);
-    driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack, driveTrainMotorLeftMid);
+    // driveTrainMotorLeftFront = new Spark(0);
+    // driveTrainMotorLeftBack = new Spark(1);
+    driveTrainMotorLeftMid = new Spark(5);
+    driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftMid);
 
-    driveTrainRightSide = new Spark(3);
+    driveTrainRightSide = new Spark(0);
     driveTrainRight = new SpeedControllerGroup(driveTrainRightSide);
 
     driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
     
     elevatorMotor = new VictorSP(4);
 
-    elbowMotor = new Jaguar(5);
+    elbowMotor = new Jaguar(1);
     elbowMotorHighLimit = new DigitalInput(0);
-    elbowMotorLowLimit = new DigitalInput(1);
+    // elbowMotorLowLimit = new DigitalInput(1);
 
     wristMotor = new Talon(6);
-    wristMotorHighLimit = new DigitalInput(2);
-    wristMotorLowLimit = new DigitalInput(3);
+    // wristMotorHighLimit = new DigitalInput(2);
+    // wristMotorLowLimit = new DigitalInput(3);
 
     fingerMotor = new Talon(7);
 

@@ -49,16 +49,16 @@ public class Robot extends TimedRobot {
   
   @Override
   public void robotInit() {
-    RobotMap.init();
-    oi = new OI();
+    RobotMap.init();   
     driveTrain = new DriveTrain();
-    wristMotor = new WristMotor();
-    intakeOutakeMotor = new IntakeOutakeMotor();
-    elevatorMotor = new ElevatorMotor();
-    climbMotor = new ClimbMotor();
-    elbowMotor = new ElbowMotor();
+    // wristMotor = new WristMotor();
+    // intakeOutakeMotor = new IntakeOutakeMotor();
+    // elevatorMotor = new ElevatorMotor();
+    // climbMotor = new ClimbMotor();
+    // elbowMotor = new ElbowMotor();
     NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");
+    oi = new OI();
     //RobotMap.wristEncoder.reset();  
     // elbowMotor.testElbow();
   }
@@ -76,7 +76,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
-    driveTrain.takeJoystickInputs(oi.rightJoystick);
+    // driveTrain.takeJoystickInputs(oi.rightJoystick);
     
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
