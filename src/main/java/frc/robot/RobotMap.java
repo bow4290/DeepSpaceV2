@@ -72,6 +72,9 @@ public class RobotMap {
   
   public static ADXRS450_Gyro turningGyro;
 
+  public static Encoder driveTrainRightEncoder;
+  public static Encoder driveTrainLeftEncoder;
+
   
   
 
@@ -79,6 +82,9 @@ public class RobotMap {
     // driveTrainMotorRightFront = new Talon(0);    
     // driveTrainMotorRightBack = new Talon(1);
     // driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
+
+    driveTrainLeftEncoder = new Encoder(1,2);
+    driveTrainRightEncoder = new Encoder(3,4);
 
     driveTrainMotorLeftFront = new Spark(0);
     driveTrainMotorLeftBack = new Spark(1);
