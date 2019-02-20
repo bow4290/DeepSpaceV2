@@ -21,7 +21,6 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import frc.robot.subsystems.ElbowMotor;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -34,7 +33,7 @@ public class RobotMap {
   public static DifferentialDrive driveTrainBase;
   public static DoubleSolenoid gearShiftSolenoid;
   public static DoubleSolenoid hatchPanelSolenoid;
-  public static DoubleSolenoid elevatorSolenoid;
+  public static DoubleSolenoid elbowSolenoid;
 
 
   private static SpeedController driveTrainMotorRightFront; 
@@ -58,13 +57,13 @@ public class RobotMap {
 
   public static Talon fingerMotor;
   
-  public static VictorSP elevatorMotor;
+  public static Spark elevatorMotor;
 
-  public static Jaguar elbowMotor;
-  public static DigitalInput elbowMotorHighLimit;
-  public static DigitalInput elbowMotorLowLimit;
+  // public static Jaguar elbowMotor;
+  // public static DigitalInput elbowMotorHighLimit;
+  // public static DigitalInput elbowMotorLowLimit;
 
-  public static Talon climbMotor;
+  public static Spark climbMotor;
   
   public static AnalogInput lineFollowerLeft;
   public static AnalogInput lineFollowerCenter;
@@ -88,7 +87,7 @@ public class RobotMap {
 
     // driveTrainMotorLeftFront = new Spark(0);
     // driveTrainMotorLeftBack = new Spark(1);
-    driveTrainMotorLeftMid = new Spark(5);
+    driveTrainMotorLeftMid = new Spark(1);
     driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftMid);
 
     driveTrainRightSide = new Spark(0);
@@ -96,23 +95,23 @@ public class RobotMap {
 
     driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
     
-    elevatorMotor = new VictorSP(4);
+    elevatorMotor = new Spark(4);
 
-    elbowMotor = new Jaguar(1);
-    elbowMotorHighLimit = new DigitalInput(0);
-    elbowMotorLowLimit = new DigitalInput(1);
+    // elbowMotor = new Jaguar(1);
+    // elbowMotorHighLimit = new DigitalInput(0);
+    // elbowMotorLowLimit = new DigitalInput(1);
 
-    wristMotor = new Talon(6);
+    wristMotor = new Talon(3);
     // wristMotorHighLimit = new DigitalInput(2);
     // wristMotorLowLimit = new DigitalInput(3);
 
-    fingerMotor = new Talon(7);
+    fingerMotor = new Talon(2);
 
-    climbMotor = new Talon(8);
+    climbMotor = new Spark(5);
 
     gearShiftSolenoid = new DoubleSolenoid(0, 0, 1);
     hatchPanelSolenoid = new DoubleSolenoid(0, 2, 3);
-    elevatorSolenoid = new DoubleSolenoid(0, 4, 5);
+    elbowSolenoid = new DoubleSolenoid(0, 4, 5);
     
 
     lineFollowerRight = new AnalogInput(0);

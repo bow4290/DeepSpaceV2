@@ -21,7 +21,6 @@ import frc.robot.commands.DriveWithJoysticks;
 import frc.robot.commands.StartVisionCommand;
 import frc.robot.subsystems.ClimbMotor;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.ElbowMotor;
 import frc.robot.subsystems.ElevatorMotor;
 import frc.robot.subsystems.IntakeOutakeMotor;
 // import frc.RobotMap.subsystems.L 
@@ -44,7 +43,6 @@ public class Robot extends TimedRobot {
   public static ElevatorMotor elevatorMotor;
   public static ClimbMotor climbMotor;
   public static DigitalInput lineFollower;
-  public static ElbowMotor elbowMotor;
   
   
   @Override

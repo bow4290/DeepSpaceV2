@@ -1,4 +1,3 @@
-
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -10,14 +9,12 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ElbowDown extends Command {
-  public ElbowDown() {
-    // requires(Robot.wristEncoder);
-    // requires(Robot.elbowMotor);
+public class HatchOpen extends Command {
+  public HatchOpen() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
@@ -28,24 +25,23 @@ public class ElbowDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    RobotMap.elbowSolenoid.set(Value.kReverse);
+    RobotMap.hatchPanelSolenoid.set(Value.kForward);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;// wristAngle == currentWristAngle;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    }
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

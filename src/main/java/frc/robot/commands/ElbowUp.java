@@ -8,6 +8,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import frc.robot.Robot;
@@ -27,16 +28,13 @@ public class ElbowUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-     if (!RobotMap.elbowMotorHighLimit.get()) {
-       Robot.elbowMotor.moveElbowUp();
-     }
-      // Robot.elbowMotor.testElbow();a
+    RobotMap.elbowSolenoid.set(Value.kForward);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return RobotMap.elbowMotorHighLimit.get();// wristAngle == currentWristAngle;
+    return false;// wristAngle == currentWristAngle;
   }
 
   // Called once after isFinished returns true
@@ -48,7 +46,6 @@ public class ElbowUp extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.elbowMotor.stopElbow();
     end();
   }
 }

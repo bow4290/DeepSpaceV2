@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import org.opencv.core.Mat;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveWithJoysticks;
@@ -31,8 +32,8 @@ public class DriveTrain extends Subsystem {
     setDefaultCommand(new DriveWithJoysticks());
   }
 
-  public void takeJoystickInputs(Joystick joystick){
-    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(joystick.getY(), 0.04), joystick.getX(), true);
+  public void takeJoystickInputs(XboxController rightJoystick){
+    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(rightJoystick.getY(), 0.04), rightJoystick.getX(), true);
     // RobotMap.driveTrainBase.arcadeDrive(joystick.getY(), joystick.getX());
   }
 

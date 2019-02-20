@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
 
 public class OI {
-  public Joystick rightJoystick;
+  public XboxController rightJoystick;
   private JoystickButton rightJoystickButton1;
   private JoystickButton rightJoystickButton2;
   private JoystickButton rightJoystickButton3;
@@ -23,7 +23,7 @@ public class OI {
   private JoystickButton rightJoystickButton7;
   private JoystickButton rightJoystickButton8;  
 
-  public Joystick leftJoystick;
+  public XboxController leftJoystick;
   private JoystickButton leftJoystickButton1;
   private JoystickButton leftJoystickButton2;
   private JoystickButton leftJoystickButton3;
@@ -56,7 +56,7 @@ public class OI {
   // private JoystickButton secondaryXboxControllerButton9;
 
   public OI() {
-    rightJoystick = new Joystick(0);
+    rightJoystick = new XboxController(0);
     rightJoystickButton1 = new JoystickButton(rightJoystick, 1);
     rightJoystickButton2 = new JoystickButton(rightJoystick, 2);
     rightJoystickButton3 = new JoystickButton(rightJoystick, 3);
@@ -66,15 +66,15 @@ public class OI {
     rightJoystickButton7 = new JoystickButton(rightJoystick, 7);
     rightJoystickButton8 = new JoystickButton(rightJoystick, 8);
 
-    leftJoystick = new Joystick(1);
-    // leftJoystickButton1 = new JoystickButton(leftJoystick, 1);
-    // leftJoystickButton2 = new JoystickButton(leftJoystick, 2);
-    // leftJoystickButton3 = new JoystickButton(leftJoystick, 3);
-    // leftJoystickButton4 = new JoystickButton(leftJoystick, 4);
-    // leftJoystickButton5 = new JoystickButton(leftJoystick, 5);
-    // leftJoystickButton6 = new JoystickButton(leftJoystick, 6);
-    // leftJoystickButton7 = new JoystickButton(leftJoystick, 7);
-    // leftJoystickButton8 = new JoystickButton(leftJoystick, 8);    
+    leftJoystick = new XboxController(1);
+    leftJoystickButton1 = new JoystickButton(leftJoystick, 1);
+    leftJoystickButton2 = new JoystickButton(leftJoystick, 2);
+    leftJoystickButton3 = new JoystickButton(leftJoystick, 3);
+    leftJoystickButton4 = new JoystickButton(leftJoystick, 4);
+    leftJoystickButton5 = new JoystickButton(leftJoystick, 5);
+    leftJoystickButton6 = new JoystickButton(leftJoystick, 6);
+    leftJoystickButton7 = new JoystickButton(leftJoystick, 7);
+    leftJoystickButton8 = new JoystickButton(leftJoystick, 8);    
     
     // mainXboxController = new XboxController(0);
     // mainXboxControllerButton1 = new JoystickButton(mainXboxController, 1);
@@ -116,17 +116,34 @@ public class OI {
     // rightJoystickButton1.whenInactive(new DriveWithJoysticks());
     // rightJoystickButton2.whileHeld(new ElbowDown());
 
-    rightJoystickButton1.whileHeld(new ElbowUp());
-    rightJoystickButton2.whileHeld(new ElbowDown());
+    rightJoystickButton1.whileHeld(new HatchOpen());
+    rightJoystickButton2.whileHeld(new HatchClose());
 
-    rightJoystickButton7.whileHeld(new PickUpBall());
-    rightJoystickButton8.whileHeld(new ThrowBall());
+    rightJoystickButton3.whileHeld(new PickUpBall());
+    rightJoystickButton4.whileHeld(new ThrowBall());
     
-    rightJoystickButton5.whileHeld(new ElevatorUp());
-    rightJoystickButton6.whileHeld(new ElevatorDown());
+    rightJoystickButton5.whileHeld(new ClimbUp());
+    rightJoystickButton6.whileHeld(new ClimbDown());
 
-    // rightJoystickButton3.whileHeld(new ElbowUp());
-    // rightJoystickButton4.whileHeld(new ElbowDown());
+    rightJoystickButton7.whileHeld(new DriveWithLineFollowers());
+
+    leftJoystickButton5.whileHeld(new ElevatorUp());
+    leftJoystickButton6.whileHeld(new ElevatorDown());
+
+    leftJoystickButton1.whileHeld(new ElbowUp());
+    leftJoystickButton2.whileHeld(new ElbowDown());
+
+    leftJoystickButton3.whileHeld(new WristUp());
+    leftJoystickButton4.whileHeld(new WristDown());
+
+
+
+
+    // wrist up and down 
+    // hatch open and close
+    // climber up and down 
+    // drive with line controller
+    
 
     // rightJoystickButton1.cancelWhenActive(new DriveWithJoysticks());
     // rightJoystickButton1.whileHeld(new DriveWithLineFollowers());
