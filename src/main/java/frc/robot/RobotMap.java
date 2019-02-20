@@ -34,6 +34,7 @@ public class RobotMap {
   public static DifferentialDrive driveTrainBase;
   public static DoubleSolenoid gearShiftSolenoid;
   public static DoubleSolenoid hatchPanelSolenoid;
+  public static DoubleSolenoid elevatorSolenoid;
 
 
   private static SpeedController driveTrainMotorRightFront; 
@@ -42,7 +43,10 @@ public class RobotMap {
 
   private static SpeedController driveTrainMotorLeftFront;
   private static SpeedController driveTrainMotorLeftBack;
+  private static SpeedController driveTrainMotorLeftMid;
   private static SpeedControllerGroup driveTrainLeft;
+
+  private static SpeedController driveTrainRightSide;
   
   // public static Encoder wristEncoder;
   // public static Encoder elbowEncoder;
@@ -59,6 +63,8 @@ public class RobotMap {
   public static Jaguar elbowMotor;
   public static DigitalInput elbowMotorHighLimit;
   public static DigitalInput elbowMotorLowLimit;
+
+  public static Talon climbMotor;
   
   public static AnalogInput lineFollowerLeft;
   public static AnalogInput lineFollowerCenter;
@@ -66,34 +72,47 @@ public class RobotMap {
   
   public static ADXRS450_Gyro turningGyro;
 
+  public static Encoder driveTrainRightEncoder;
+  public static Encoder driveTrainLeftEncoder;
+
   
   
 
   public static void init(){
-    driveTrainMotorRightFront = new Talon(0);    
-    driveTrainMotorRightBack = new Talon(1);
-    driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
+    // driveTrainMotorRightFront = new Talon(0);    
+    // driveTrainMotorRightBack = new Talon(1);
+    // driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
 
-    driveTrainMotorLeftFront = new Spark(2);
-    driveTrainMotorLeftBack = new Spark(3);
-    driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftFront, driveTrainMotorLeftBack);
+    driveTrainLeftEncoder = new Encoder(1,2);
+    driveTrainRightEncoder = new Encoder(3,4);
+
+    // driveTrainMotorLeftFront = new Spark(0);
+    // driveTrainMotorLeftBack = new Spark(1);
+    driveTrainMotorLeftMid = new Spark(5);
+    driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftMid);
+
+    driveTrainRightSide = new Spark(0);
+    driveTrainRight = new SpeedControllerGroup(driveTrainRightSide);
 
     driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
     
     elevatorMotor = new VictorSP(4);
 
-    elbowMotor = new Jaguar(5);
+    elbowMotor = new Jaguar(1);
     elbowMotorHighLimit = new DigitalInput(0);
-    elbowMotorLowLimit = new DigitalInput(1);
+    // elbowMotorLowLimit = new DigitalInput(1);
 
     wristMotor = new Talon(6);
-    wristMotorHighLimit = new DigitalInput(2);
-    wristMotorLowLimit = new DigitalInput(3);
+    // wristMotorHighLimit = new DigitalInput(2);
+    // wristMotorLowLimit = new DigitalInput(3);
 
     fingerMotor = new Talon(7);
 
-    gearShiftSolenoid = new DoubleSolenoid(4, 5);
-    hatchPanelSolenoid = new DoubleSolenoid(6, 7);
+    climbMotor = new Talon(8);
+
+    gearShiftSolenoid = new DoubleSolenoid(0, 0, 1);
+    hatchPanelSolenoid = new DoubleSolenoid(0, 2, 3);
+    elevatorSolenoid = new DoubleSolenoid(0, 4, 5);
     
 
     lineFollowerRight = new AnalogInput(0);

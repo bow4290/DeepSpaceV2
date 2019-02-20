@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import org.opencv.core.Mat;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -26,34 +28,31 @@ public class DriveTrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new DriveWithJoysticks());
-    oldValue = 0.0;
+    setDefaultCommand(new DriveWithJoysticks());
   }
 
   public void takeJoystickInputs(Joystick joystick){
-    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(joystick.getY(), 0.08), joystick.getX(), true);
+    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(joystick.getY(), 0.04), joystick.getX(), true);
+    // RobotMap.driveTrainBase.arcadeDrive(joystick.getY(), joystick.getX());
   }
 
-  private double speedBuffer(double newValue) {
-	  if(Math.abs(newValue)<.5 && Math.abs(oldValue)>.5){
-      // System.out.println("New Value: " + newValue + "Old Value: " + oldValue);
-      oldValue = Math.abs(oldValue*speedReductionFactor);
-      return oldValue;
-    }
-    else{
-      oldValue = Math.abs(newValue);
-      return newValue;
-    }
-  }
-  public double speedBuffer(double joy, double perc) {
-		double addSpeed = Math.abs(oldSpeed) * perc;
-		if (Math.abs(joy - oldSpeed) < addSpeed + 0.01) {
+   public double speedBuffer(double joy, double perc) {
+    double oldSpeedMagnitude = Math.abs(oldSpeed);
+    double addSpeed = oldSpeedMagnitude * perc;
+    double directionForwardReverse = Math.signum(joy);
+    double newSpeedMagnitude = Math.abs(joy);
+    double speedDelta = Math.abs(joy-oldSpeed);
+    double directionSpeedDelta = Math.signum(joy-oldSpeed);
+
+		if (speedDelta < addSpeed + 0.01) {
 			oldSpeed = joy;
-		} else if (Math.abs(oldSpeed) < perc * 10 && Math.abs(joy) > 0.1) {
-			oldSpeed = perc * 10 * Math.signum(joy);
-//			oldSpeed += 0.01 * Math.signum(joy - oldSpeed);
-		} else {
-			oldSpeed += addSpeed * Math.signum(joy - oldSpeed);
+    }
+    else if (oldSpeedMagnitude < perc * 10 && newSpeedMagnitude > 0.1) {
+			oldSpeed = perc * 10 * directionForwardReverse;
+			oldSpeed += 0.01 * speedDelta;
+    } 
+    else {
+			oldSpeed += addSpeed * directionSpeedDelta;
 		}
 		return oldSpeed;
 	}
@@ -71,6 +70,6 @@ public class DriveTrain extends Subsystem {
   }
 
   public void stop(){
-    // RobotMap.driveTrainBase.tankDrive(0,0);
+     RobotMap.driveTrainBase.tankDrive(0,0);
   }
 }

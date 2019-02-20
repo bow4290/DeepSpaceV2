@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveWithJoysticks;
 import frc.robot.commands.StartVisionCommand;
+import frc.robot.subsystems.ClimbMotor;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElbowMotor;
 import frc.robot.subsystems.ElevatorMotor;
@@ -41,21 +42,23 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static IntakeOutakeMotor intakeOutakeMotor;
   public static ElevatorMotor elevatorMotor;
+  public static ClimbMotor climbMotor;
   public static DigitalInput lineFollower;
   public static ElbowMotor elbowMotor;
   
   
   @Override
   public void robotInit() {
-    RobotMap.init();
-    oi = new OI();
+    RobotMap.init();   
     driveTrain = new DriveTrain();
-    wristMotor = new WristMotor();
-    intakeOutakeMotor = new IntakeOutakeMotor();
-    elevatorMotor = new ElevatorMotor();
-    elbowMotor = new ElbowMotor();
+    // wristMotor = new WristMotor();
+    // intakeOutakeMotor = new IntakeOutakeMotor();
+    // elevatorMotor = new ElevatorMotor();
+    // climbMotor = new ClimbMotor();
+    // elbowMotor = new ElbowMotor();
     NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");
+    oi = new OI();
     //RobotMap.wristEncoder.reset();  
     // elbowMotor.testElbow();
   }
@@ -73,7 +76,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
-    driveTrain.takeJoystickInputs(oi.rightJoystick);
+    // driveTrain.takeJoystickInputs(oi.rightJoystick);
     
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
