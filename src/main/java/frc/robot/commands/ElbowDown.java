@@ -11,6 +11,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class ElbowDown extends Command {
   public ElbowDown() {
@@ -26,15 +27,16 @@ public class ElbowDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-     
-      Robot.elbowMotor.moveElbowDown();
+     if (!RobotMap.elbowMotorLowLimit.get());{
+             Robot.elbowMotor.moveElbowDown();
+     }
     
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;// wristAngle == currentWristAngle;
+    return RobotMap.elbowMotorLowLimit.get();// wristAngle == currentWristAngle;
   }
 
   // Called once after isFinished returns true

@@ -29,26 +29,26 @@ public class ElbowMotor extends Subsystem {
   }
 
   public void moveElbowUp(){
-    if(true){//!RobotMap.elbowMotorHighLimit.get()){
+    // if(true){//!RobotMap.elbowMotorHighLimit.get()){
       // RobotMap.elbowMotor.set(1);//
       RobotMap.elbowMotor.set(1*(Robot.oi.leftJoystick.getX()));
-    }
-    else{
-      stopElbow();
-    }
+    // }
+    // else{
+    //   stopElbow();
+    // }
     
     
   }
 
   public void moveElbowDown(){
     // if(!RobotMap.elbowMotorLowLimit.get()){
-    if(true){
+    // if(true){
       // RobotMap.elbowMotor.set(1);//
       RobotMap.elbowMotor.set(1*(Robot.oi.leftJoystick.getX()));
-    }
-    else{
-      stopElbow();
-    }
+    // }
+    // else{
+    //   stopElbow();
+    // }
     
   }
 

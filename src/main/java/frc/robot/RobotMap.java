@@ -100,7 +100,7 @@ public class RobotMap {
 
     elbowMotor = new Jaguar(1);
     elbowMotorHighLimit = new DigitalInput(0);
-    // elbowMotorLowLimit = new DigitalInput(1);
+    elbowMotorLowLimit = new DigitalInput(1);
 
     wristMotor = new Talon(6);
     // wristMotorHighLimit = new DigitalInput(2);
