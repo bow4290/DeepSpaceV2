@@ -63,7 +63,7 @@ public class RobotMap {
   // public static DigitalInput elbowMotorHighLimit;
   // public static DigitalInput elbowMotorLowLimit;
 
-  public static Spark climbMotor;
+  public static Talon climbMotor;
   
   public static AnalogInput lineFollowerLeft;
   public static AnalogInput lineFollowerCenter;
@@ -91,27 +91,31 @@ public class RobotMap {
     driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftMid);
 
     driveTrainRightSide = new Spark(0);
+    driveTrainRightSide.setInverted(true);
     driveTrainRight = new SpeedControllerGroup(driveTrainRightSide);
 
     driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
     
     elevatorMotor = new Spark(4);
 
+    // wristMotorHighLimit = new DigitalInput(0);
+    // wristMotorLowLimit = new DigitalInput(1);
+
     // elbowMotor = new Jaguar(1);
     // elbowMotorHighLimit = new DigitalInput(0);
     // elbowMotorLowLimit = new DigitalInput(1);
 
-    wristMotor = new Talon(3);
+    wristMotor = new Talon(2);
     // wristMotorHighLimit = new DigitalInput(2);
     // wristMotorLowLimit = new DigitalInput(3);
 
-    fingerMotor = new Talon(2);
+    fingerMotor = new Talon(3);
 
-    climbMotor = new Spark(5);
+    climbMotor = new Talon(5);
 
-    gearShiftSolenoid = new DoubleSolenoid(0, 0, 1);
-    hatchPanelSolenoid = new DoubleSolenoid(0, 2, 3);
-    elbowSolenoid = new DoubleSolenoid(0, 4, 5);
+    gearShiftSolenoid = new DoubleSolenoid(0, 1, 0);
+    hatchPanelSolenoid = new DoubleSolenoid(0, 3, 2);
+    elbowSolenoid = new DoubleSolenoid(0, 5, 4);
     
 
     lineFollowerRight = new AnalogInput(0);

@@ -32,28 +32,27 @@ public class WristMotor extends Subsystem {
   }
 
   public void moveWristUp(){
-    RobotMap.wristMotor.set(.5);
-    if(RobotMap.wristMotorHighLimit.get()){
+    RobotMap.wristMotor.set(-.5);
+    // if(RobotMap.wristMotorHighLimit.get()){
       //RobotMap.wristMotor.set(maxValue*Math.abs(Robot.oi.leftJoystick.getY()));
-      RobotMap.wristMotor.set(.5);
-    }
-    else{
-      stopWrist();
-    }
+    // }
+    // else{
+      // stopWrist();
+    // }
   }
 
   public void moveWristDown(){
-    if(RobotMap.wristMotorLowLimit.get()){
-      RobotMap.wristMotor.set(-.5);
+    // if(RobotMap.wristMotorLowLimit.get()){
+      RobotMap.wristMotor.set(.2);
       // RobotMap.wristMotor.set(-maxValue*Math.abs(Robot.oi.leftJoystick.getY()));
-    }
-    else{
-      stopWrist();
-    }
+    // }
+    // else{
+      // stopWrist();
+    // }
   }
 
   public void stopWrist(){
-    RobotMap.wristMotor.set(0.1);
+    RobotMap.wristMotor.set(-0.2);
   }
 
 

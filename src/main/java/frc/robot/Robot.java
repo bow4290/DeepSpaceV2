@@ -49,10 +49,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     RobotMap.init();   
     driveTrain = new DriveTrain();
-    // wristMotor = new WristMotor();
-    // intakeOutakeMotor = new IntakeOutakeMotor();
-    // elevatorMotor = new ElevatorMotor();
-    // climbMotor = new ClimbMotor();
+    wristMotor = new WristMotor();
+    intakeOutakeMotor = new IntakeOutakeMotor();
+    elevatorMotor = new ElevatorMotor();
+    climbMotor = new ClimbMotor();
     // elbowMotor = new ElbowMotor();
     NetworkTable.globalDeleteAll();
     nTable = NetworkTable.getTable("gyroOut");

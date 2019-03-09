@@ -29,11 +29,11 @@ public class ElevatorMotor extends Subsystem {
   }
 
   public void ElevatorUp(){
-    RobotMap.elevatorMotor.set(.4);
+    RobotMap.elevatorMotor.set(1);
   }
 
   public void ElevatorDown(){
-    RobotMap.elevatorMotor.set(-.4);
+    RobotMap.elevatorMotor.set(-1);
   }
 
   public void stopElevator(){

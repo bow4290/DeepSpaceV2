@@ -119,16 +119,14 @@ public class OI {
     rightJoystickButton1.whileHeld(new HatchOpen());
     rightJoystickButton2.whileHeld(new HatchClose());
 
-    rightJoystickButton3.whileHeld(new PickUpBall());
-    rightJoystickButton4.whileHeld(new ThrowBall());
+    rightJoystickButton3.whileHeld(new ShiftUp());
+    rightJoystickButton4.whileHeld(new ShiftDown());
     
-    rightJoystickButton5.whileHeld(new ClimbUp());
-    rightJoystickButton6.whileHeld(new ClimbDown());
+    rightJoystickButton5.whileHeld(new ThrowBall());
+    rightJoystickButton6.whileHeld(new PickUpBall());
 
-    rightJoystickButton7.whileHeld(new DriveWithLineFollowers());
+    //rightJoystickButton7.whileHeld(new DriveWithLineFollowers());
 
-    leftJoystickButton5.whileHeld(new ElevatorUp());
-    leftJoystickButton6.whileHeld(new ElevatorDown());
 
     leftJoystickButton1.whileHeld(new ElbowUp());
     leftJoystickButton2.whileHeld(new ElbowDown());
@@ -136,6 +134,11 @@ public class OI {
     leftJoystickButton3.whileHeld(new WristUp());
     leftJoystickButton4.whileHeld(new WristDown());
 
+    leftJoystickButton5.whileHeld(new ElevatorUp());
+    leftJoystickButton6.whileHeld(new ElevatorDown());
+
+    leftJoystickButton7.whileHeld(new ClimbUp());
+    leftJoystickButton8.whileHeld(new ClimbDown());
 
 
 
