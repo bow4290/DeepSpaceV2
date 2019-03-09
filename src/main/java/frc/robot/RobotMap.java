@@ -60,8 +60,8 @@ public class RobotMap {
   public static Spark elevatorMotor;
 
   // public static Jaguar elbowMotor;
-  // public static DigitalInput elbowMotorHighLimit;
-  // public static DigitalInput elbowMotorLowLimit;
+  public static DigitalInput elbowMotorHighLimit;
+  public static DigitalInput elbowMotorLowLimit;
 
   public static Talon climbMotor;
   
@@ -99,15 +99,15 @@ public class RobotMap {
     elevatorMotor = new Spark(4);
 
     // wristMotorHighLimit = new DigitalInput(0);
-    // wristMotorLowLimit = new DigitalInput(1);
+    // wristMotorLowLimit = new DigitalInput(0);
 
     // elbowMotor = new Jaguar(1);
     // elbowMotorHighLimit = new DigitalInput(0);
     // elbowMotorLowLimit = new DigitalInput(1);
 
     wristMotor = new Talon(2);
-    // wristMotorHighLimit = new DigitalInput(2);
-    // wristMotorLowLimit = new DigitalInput(3);
+    wristMotorHighLimit = new DigitalInput(9);
+    wristMotorLowLimit = new DigitalInput(0);
 
     fingerMotor = new Talon(3);
 
