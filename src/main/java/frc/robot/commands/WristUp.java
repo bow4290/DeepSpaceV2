@@ -11,8 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.WristMotor;
+import frc.robot.subsystems.WristPID;
 
 public class WristUp extends Command {
+  WristPID pid;
   public WristUp() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -21,21 +23,22 @@ public class WristUp extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    pid = new WristPID();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (RobotMap.wristMotorHighLimit.get()) {
-    Robot.wristMotor.moveWristUp();
-    }
+    double pidInput = pid.returnPIDInput();
+    pid.usePIDOutput(pidInput);
+    System.out.println("WORKING");
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !RobotMap.wristMotorHighLimit.get();
-    // return false;
+    // return !RobotMap.wristMotorHighLimit.get();
+    return false;
   }
 
   // Called once after isFinished returns true

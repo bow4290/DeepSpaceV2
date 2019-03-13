@@ -50,6 +50,7 @@ public class WristMotor extends Subsystem {
       // stopWrist();
     // }
   }
+  
 
   public void stopWrist(){
     RobotMap.wristMotor.set(-0.35);

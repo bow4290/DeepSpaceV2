@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.ADXL345_I2C;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -19,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveWithJoysticks;
 import frc.robot.commands.StartVisionCommand;
+import frc.robot.commands.WristUp;
 import frc.robot.subsystems.ClimbMotor;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ElevatorMotor;
@@ -26,6 +28,7 @@ import frc.robot.subsystems.IntakeOutakeMotor;
 // import frc.RobotMap.subsystems.L 
 // import sun.nio.ch.Net;
 import frc.robot.subsystems.WristMotor;
+import frc.robot.subsystems.WristPID;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -90,7 +93,19 @@ public class Robot extends TimedRobot {
     // int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
     // nTable.putNumber("Wrist Value", wristEncoderValue);
     // nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
-   
+    double potPosition = RobotMap.potInputPosition.getVoltage();
+    nTable.putNumber("PotPositon", potPosition);
+
+    double accelX = RobotMap.accel.getX();
+    double accelY = RobotMap.accel.getY();
+    double accelZ = RobotMap.accel.getZ();
+
+    nTable.putNumber("Accelerometer X", accelX);
+    nTable.putNumber("Accelerometer Y", accelY);
+    nTable.putNumber("Accelerometer Z", accelZ);
+
+    new WristUp();
+
   }
 
   @Override

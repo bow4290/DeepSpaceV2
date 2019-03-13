@@ -140,6 +140,8 @@ public class OI {
     leftJoystickButton7.whileHeld(new ClimbUp());
     leftJoystickButton8.whileHeld(new ClimbDown());
 
+    // rightJoystickButton8.whileHeld(new WristUp());
+
 
 
     // wrist up and down 
