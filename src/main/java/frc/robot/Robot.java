@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveWithJoysticks;
-import frc.robot.commands.StartVisionCommand;
 import frc.robot.commands.WristUp;
 import frc.robot.subsystems.ClimbMotor;
 import frc.robot.subsystems.DriveTrain;
@@ -71,28 +70,15 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {    
-  // new StartVisionCommand().start();
   }
   
   @Override
   public void teleopPeriodic() { 
     Scheduler.getInstance().run();
-    // driveTrain.takeJoystickInputs(oi.rightJoystick);
     
     double gyroAngle = RobotMap.turningGyro.getAngle();
     nTable.putNumber("Current Gyro Value", gyroAngle);
-
-    double lineFollowerLeftValue = RobotMap.lineFollowerLeft.getVoltage();
-    double lineFollowerCenterValue = RobotMap.lineFollowerCenter.getVoltage();
-    double lineFollowerRightValue = RobotMap.lineFollowerRight.getVoltage();
-    nTable.putNumber("Line Follower Left Value", lineFollowerLeftValue);
-    nTable.putNumber("Line Follower Center Value", lineFollowerCenterValue);
-    nTable.putNumber("Line Follower Right Value", lineFollowerRightValue);
-
-    // int wristEncoderValue = RobotMap.wristEncoder.get();
-    // int wristEncoderValueRaw = RobotMap.wristEncoder.getRaw();
-    // nTable.putNumber("Wrist Value", wristEncoderValue);
-    // nTable.putNumber("Wrist Value Raw", wristEncoderValueRaw);
+    
     double potPosition = RobotMap.potInputPosition.getVoltage();
     nTable.putNumber("PotPositon", potPosition);
 
@@ -128,7 +114,6 @@ public class Robot extends TimedRobot {
   
   @Override
   public void testPeriodic() {
-    Scheduler.getInstance().run(); 
-    //LiveWindow.run();
+    Scheduler.getInstance().run();    
   }
 }

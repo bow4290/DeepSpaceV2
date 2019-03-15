@@ -34,68 +34,37 @@ import edu.wpi.first.wpilibj.interfaces.Accelerometer;
  */
 public class RobotMap {
   
+  private static SpeedController driveTrainLeftSide;
+  private static SpeedControllerGroup driveTrainLeft;
+  
+  private static SpeedController driveTrainRightSide;  
+  private static SpeedControllerGroup driveTrainRight;
+
   public static DifferentialDrive driveTrainBase;
+  
+  public static Talon wristMotor;
+  public static Talon fingerMotor;  
+  public static Spark elevatorMotor;
+  public static Talon climbMotor;
+  
   public static DoubleSolenoid gearShiftSolenoid;
   public static DoubleSolenoid hatchPanelSolenoid;
   public static DoubleSolenoid elbowSolenoid;
 
-
-  private static SpeedController driveTrainMotorRightFront; 
-  private static SpeedController driveTrainMotorRightBack;
-  private static SpeedControllerGroup driveTrainRight;
-
-  private static SpeedController driveTrainMotorLeftFront;
-  private static SpeedController driveTrainMotorLeftBack;
-  private static SpeedController driveTrainMotorLeftMid;
-  private static SpeedControllerGroup driveTrainLeft;
-
-  private static SpeedController driveTrainRightSide;
-  
-  // public static Encoder wristEncoder;
-  // public static Encoder elbowEncoder;
-
-  // public static Jaguar elbow;
-  public static Talon wristMotor;
-  public static DigitalInput wristMotorHighLimit;
-  public static DigitalInput wristMotorLowLimit;
-
-  public static Talon fingerMotor;
-  
-  public static Spark elevatorMotor;
-
-  // public static Jaguar elbowMotor;
-  public static DigitalInput elbowMotorHighLimit;
-  public static DigitalInput elbowMotorLowLimit;
-
-  public static Talon climbMotor;
-  
-  public static AnalogInput lineFollowerLeft;
-  public static AnalogInput lineFollowerCenter;
-  public static AnalogInput lineFollowerRight;
-  
   public static ADXRS450_Gyro turningGyro;
 
   public static Encoder driveTrainRightEncoder;
   public static Encoder driveTrainLeftEncoder;
   public static ADXL345_I2C accel;
   public static AnalogInput potInputPosition;
-  private static AnalogPotentiometer potentiometer;
-
-  
-  
+  public static AnalogPotentiometer potentiometer;
 
   public static void init(){
-    // driveTrainMotorRightFront = new Talon(0);    
-    // driveTrainMotorRightBack = new Talon(1);
-    // driveTrainRight = new SpeedControllerGroup(driveTrainMotorRightFront, driveTrainMotorRightBack);
-
     driveTrainLeftEncoder = new Encoder(1,2);
     driveTrainRightEncoder = new Encoder(3,4);
-
-    // driveTrainMotorLeftFront = new Spark(0);
-    // driveTrainMotorLeftBack = new Spark(1);
-    driveTrainMotorLeftMid = new Spark(1);
-    driveTrainLeft = new SpeedControllerGroup(driveTrainMotorLeftMid);
+    
+    driveTrainLeftSide = new Spark(1);
+    driveTrainLeft = new SpeedControllerGroup(driveTrainLeftSide);
 
     driveTrainRightSide = new Spark(0);
     driveTrainRightSide.setInverted(true);
@@ -103,32 +72,15 @@ public class RobotMap {
 
     driveTrainBase = new DifferentialDrive(driveTrainLeft, driveTrainRight);
     
-    elevatorMotor = new Spark(4);
-
-    // wristMotorHighLimit = new DigitalInput(0);
-    // wristMotorLowLimit = new DigitalInput(0);
-
-    // elbowMotor = new Jaguar(1);
-    // elbowMotorHighLimit = new DigitalInput(0);
-    // elbowMotorLowLimit = new DigitalInput(1);
-
     wristMotor = new Talon(2);
-    wristMotorHighLimit = new DigitalInput(9);
-    wristMotorLowLimit = new DigitalInput(0);
-
     fingerMotor = new Talon(3);
-
+    elevatorMotor = new Spark(4);
     climbMotor = new Talon(5);
 
     gearShiftSolenoid = new DoubleSolenoid(0, 1, 0);
     hatchPanelSolenoid = new DoubleSolenoid(0, 3, 2);
     elbowSolenoid = new DoubleSolenoid(0, 5, 4);
     
-
-    lineFollowerRight = new AnalogInput(0);
-    lineFollowerCenter = new AnalogInput(1);
-    lineFollowerLeft = new AnalogInput(2);
-
     turningGyro = new ADXRS450_Gyro();
     accel = new ADXL345_I2C(I2C.Port.kOnboard, Accelerometer.Range.k4G);
 

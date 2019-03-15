@@ -33,28 +33,6 @@ public class OI {
   private JoystickButton leftJoystickButton7;
   private JoystickButton leftJoystickButton8;
 
-  // public XboxController mainXboxController;
-  // private JoystickButton mainXboxControllerButton1;
-  // private JoystickButton mainXboxControllerButton2;
-  // private JoystickButton mainXboxControllerButton3;
-  // private JoystickButton mainXboxControllerButton4;
-  // private JoystickButton mainXboxControllerButton5;
-  // private JoystickButton mainXboxControllerButton6;
-  // private JoystickButton mainXboxControllerButton7;
-  // private JoystickButton mainXboxControllerButton8;
-  // private JoystickButton mainXboxControllerButton9;
-
-  // public XboxController secondaryXboxController;
-  // private JoystickButton secondaryXboxControllerButton1;
-  // private JoystickButton secondaryXboxControllerButton2;
-  // private JoystickButton secondaryXboxControllerButton3;
-  // private JoystickButton secondaryXboxControllerButton4;
-  // private JoystickButton secondaryXboxControllerButton5;
-  // private JoystickButton secondaryXboxControllerButton6;
-  // private JoystickButton secondaryXboxControllerButton7;
-  // private JoystickButton secondaryXboxControllerButton8;
-  // private JoystickButton secondaryXboxControllerButton9;
-
   public OI() {
     rightJoystick = new XboxController(0);
     rightJoystickButton1 = new JoystickButton(rightJoystick, 1);
@@ -76,46 +54,13 @@ public class OI {
     leftJoystickButton7 = new JoystickButton(leftJoystick, 7);
     leftJoystickButton8 = new JoystickButton(leftJoystick, 8);    
     
-    // mainXboxController = new XboxController(0);
-    // mainXboxControllerButton1 = new JoystickButton(mainXboxController, 1);
-    // mainXboxControllerButton2 = new JoystickButton(mainXboxController, 2);
-    // mainXboxControllerButton3 = new JoystickButton(mainXboxController, 3);
-    // mainXboxControllerButton4 = new JoystickButton(mainXboxController, 4);
-    // mainXboxControllerButton5 = new JoystickButton(mainXboxController, 5);
-    // mainXboxControllerButton6 = new JoystickButton(mainXboxController, 6);
-    // mainXboxControllerButton7 = new JoystickButton(mainXboxController, 7);
-    // mainXboxControllerButton8 = new JoystickButton(mainXboxController, 8);
-    // mainXboxControllerButton9 = new JoystickButton(mainXboxController, 9);
-
-    // secondaryXboxController = new XboxController(0);
-    // secondaryXboxControllerButton1 = new JoystickButton(secondaryXboxController, 0);
-    // secondaryXboxControllerButton2 = new JoystickButton(secondaryXboxController, 1);
-    // secondaryXboxControllerButton3 = new JoystickButton(secondaryXboxController, 2);
-    // secondaryXboxControllerButton4 = new JoystickButton(secondaryXboxController, 3);
-    // secondaryXboxControllerButton5 = new JoystickButton(secondaryXboxController, 4);
-    // secondaryXboxControllerButton6 = new JoystickButton(secondaryXboxController, 5);
-    // secondaryXboxControllerButton7 = new JoystickButton(secondaryXboxController, 6);
-    // secondaryXboxControllerButton8 = new JoystickButton(secondaryXboxController, 7);
-    // secondaryXboxControllerButton9 = new JoystickButton(secondaryXboxController, 8);
-
+    
     //Joystick Button API Notes:
     // Methods inherited from class edu.wpi.first.wpilibj.buttons.Button
     // cancelWhenPressed, toggleWhenPressed, whenPressed, whenReleased, whileHeld
     // Methods inherited from class edu.wpi.first.wpilibj.buttons.Trigger
     // cancelWhenActive, initSendable, toggleWhenActive, whenActive, whenInactive, whileActive
-
-
-    // rightJoystickButton1.whenPressed(new TurnWithGyroCommand(90));
-    // rightJoystickButton1.whenPressed(new StartVisionCommand());
     
-    // rightJoystickButton1.whileHeld(new MoveWristToAngle(1));
-    // rightJoystickButton2.whileHeld(new MoveWristToAngle(0));
-
-    // rightJoystickButton1.whileHeld(new ElbowUp());
-    // rightJoystickButton1.cancelWhenActive(new DriveWithJoysticks());
-    // rightJoystickButton1.whenInactive(new DriveWithJoysticks());
-    // rightJoystickButton2.whileHeld(new ElbowDown());
-
     rightJoystickButton1.whileHeld(new HatchOpen());
     rightJoystickButton2.whileHeld(new HatchClose());
 
@@ -124,9 +69,6 @@ public class OI {
     
     rightJoystickButton5.whileHeld(new ThrowBall());
     rightJoystickButton6.whileHeld(new PickUpBall());
-
-    //rightJoystickButton7.whileHeld(new DriveWithLineFollowers());
-
 
     leftJoystickButton1.whileHeld(new ElbowUp());
     leftJoystickButton2.whileHeld(new ElbowDown());
@@ -140,44 +82,10 @@ public class OI {
     leftJoystickButton7.whileHeld(new ClimbUp());
     leftJoystickButton8.whileHeld(new ClimbDown());
 
-    // rightJoystickButton8.whileHeld(new WristUp());
-
-
-
     // wrist up and down 
     // hatch open and close
     // climber up and down 
     // drive with line controller
-    
-
-    // rightJoystickButton1.cancelWhenActive(new DriveWithJoysticks());
-    // rightJoystickButton1.whileHeld(new DriveWithLineFollowers());
-    // rightJoystickButton1.whenReleased(new DriveWithJoysticks());
-
-    // leftJoystickButton3.whileHeld(new ElbowUp());
-    // leftJoystickButton4.whileHeld(new ElbowDown());
-
-    // leftJoystickButton1.whileHeld(new WristUp());
-    // leftJoystickButton2.whileHeld(new WristDown());
-
-
-
-    // mainXboxControllerButton1.whenPressed(new TurnWithGyroCommand(90));
-    // mainXboxControllerButton2.whenPressed(new StartVisionCommand());
-    
-    // mainXboxControllerButton3.whileHeld(new MoveWristToAngle(1));
-    // mainXboxControllerButton4.whileHeld(new MoveWristToAngle(0));
-
-    // mainXboxControllerButton5.whileHeld(new PickUpBall());
-    // mainXboxControllerButton6.whileHeld(new ThrowBall());
-    
-    // mainXboxControllerButton7.whileHeld(new ElevatorUp());
-    // mainXboxControllerButton8.whileHeld(new ElevatorDown());
-
-    // mainXboxControllerButton1.whileHeld(new ElbowUp());
-    // mainXboxControllerButton2.whileHeld(new ElbowDown());
-
-
 
   }
 }
