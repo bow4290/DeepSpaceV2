@@ -126,6 +126,7 @@ public class OI {
     rightJoystickButton6.whileHeld(new ClimbDown());
 
     rightJoystickButton7.whileHeld(new DriveWithLineFollowers());
+    rightJoystickButton8.whileHeld(new experimentalAccelerometer());
 
     leftJoystickButton5.whileHeld(new ElevatorUp());
     leftJoystickButton6.whileHeld(new ElevatorDown());
