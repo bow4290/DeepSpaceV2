@@ -29,7 +29,6 @@ import frc.robot.subsystems.IntakeOutakeMotor;
 // import frc.RobotMap.subsystems.L 
 // import sun.nio.ch.Net;
 import frc.robot.subsystems.WristMotor;
-import frc.robot.subsystems.WristPID;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,7 +40,6 @@ import frc.robot.subsystems.WristPID;
 public class Robot extends TimedRobot {
   public static DriveTrain driveTrain;
   public static WristMotor wristMotor;
-  private NetworkTable nTable;
   public static OI oi;
   public static IntakeOutakeMotor intakeOutakeMotor;
   public static ElevatorMotor elevatorMotor;
@@ -58,8 +56,6 @@ public class Robot extends TimedRobot {
     elevatorMotor = new ElevatorMotor();
     climbMotor = new ClimbMotor();
     // elbowMotor = new ElbowMotor();
-    NetworkTable.globalDeleteAll();
-    nTable = NetworkTable.getTable("gyroOut");
     oi = new OI();
     //RobotMap.wristEncoder.reset();  
     // elbowMotor.testElbow();
@@ -81,10 +77,11 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     
     double gyroAngle = RobotMap.turningGyro.getAngle();
+    SmartDashboard.putNumber("Gyro Angle", gyroAngle);
     
     double potPosition = RobotMap.potInputPosition.getVoltage();
     SmartDashboard.putNumber("Pot Position", potPosition);
-    new WristUp();
+    //new WristUp();
 
   }
 
