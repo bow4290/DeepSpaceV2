@@ -15,6 +15,7 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveWithJoysticks;
 import frc.robot.commands.MoveWristToAngle;
+import frc.robot.commands.WristWithJoysticks;
 import frc.robot.OI;
 
 
@@ -25,10 +26,12 @@ public class WristMotor extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   double maxValue = .5;
+  private double oldSpeed = 0;
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MoveWristToAngle(90));
+    setDefaultCommand(new WristWithJoysticks());
   }
 
   public void moveWristUp(){
@@ -55,6 +58,31 @@ public class WristMotor extends Subsystem {
   public void stopWrist(){
     RobotMap.wristMotor.set(-0.35);
   }
+
+  public void TakeJoystickInput(XboxController leftJoystick) {
+    RobotMap.wristMotor.set(speedBuffer(leftJoystick.getY(), .04));
+  }
+
+  public double speedBuffer(double joy, double perc) {
+    double oldSpeedMagnitude = Math.abs(oldSpeed);
+    double addSpeed = oldSpeedMagnitude * perc;
+    double directionForwardReverse = Math.signum(joy);
+    double newSpeedMagnitude = Math.abs(joy);
+    double speedDelta = Math.abs(joy-oldSpeed);
+    double directionSpeedDelta = Math.signum(joy-oldSpeed);
+
+		if (speedDelta < addSpeed + 0.01) {
+			oldSpeed = joy;
+    }
+    else if (oldSpeedMagnitude < perc * 10 && newSpeedMagnitude > 0.1) {
+			oldSpeed = perc * 10 * directionForwardReverse;
+			oldSpeed += 0.01 * speedDelta;
+    } 
+    else {
+			oldSpeed += addSpeed * directionSpeedDelta;
+		}
+		return oldSpeed;
+	}
 
 
 

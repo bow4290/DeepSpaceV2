@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.ADXL345_I2C;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
@@ -61,6 +63,8 @@ public class Robot extends TimedRobot {
     oi = new OI();
     //RobotMap.wristEncoder.reset();  
     // elbowMotor.testElbow();
+    UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+    UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
   }
 
   
@@ -77,19 +81,9 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     
     double gyroAngle = RobotMap.turningGyro.getAngle();
-    nTable.putNumber("Current Gyro Value", gyroAngle);
     
     double potPosition = RobotMap.potInputPosition.getVoltage();
-    nTable.putNumber("PotPositon", potPosition);
-
-    double accelX = RobotMap.accel.getX();
-    double accelY = RobotMap.accel.getY();
-    double accelZ = RobotMap.accel.getZ();
-
-    nTable.putNumber("Accelerometer X", accelX);
-    nTable.putNumber("Accelerometer Y", accelY);
-    nTable.putNumber("Accelerometer Z", accelZ);
-
+    SmartDashboard.putNumber("Pot Position", potPosition);
     new WristUp();
 
   }
