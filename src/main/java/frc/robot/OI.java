@@ -32,6 +32,7 @@ public class OI {
   private JoystickButton leftJoystickButton6;
   private JoystickButton leftJoystickButton7;
   private JoystickButton leftJoystickButton8;
+  private JoystickButton leftJoystickButton9;
 
   public OI() {
     rightJoystick = new XboxController(0);
@@ -52,7 +53,9 @@ public class OI {
     leftJoystickButton5 = new JoystickButton(leftJoystick, 5);
     leftJoystickButton6 = new JoystickButton(leftJoystick, 6);
     leftJoystickButton7 = new JoystickButton(leftJoystick, 7);
-    leftJoystickButton8 = new JoystickButton(leftJoystick, 8);    
+    leftJoystickButton8 = new JoystickButton(leftJoystick, 8);
+    leftJoystickButton9 = new JoystickButton(leftJoystick,9);
+      
     
     
     //Joystick Button API Notes:
@@ -61,26 +64,38 @@ public class OI {
     // Methods inherited from class edu.wpi.first.wpilibj.buttons.Trigger
     // cancelWhenActive, initSendable, toggleWhenActive, whenActive, whenInactive, whileActive
     
+    //========================================================================================
+    //==================  Driver Controller  =================================================
+    //========================================================================================
     rightJoystickButton1.whileHeld(new HatchOpen());
     rightJoystickButton2.whileHeld(new HatchClose());
 
     rightJoystickButton3.whileHeld(new ShiftUp());
     rightJoystickButton4.whileHeld(new ShiftDown());
     
-    rightJoystickButton5.whileHeld(new ThrowBall());
-    rightJoystickButton6.whileHeld(new PickUpBall());
+    rightJoystickButton5.whileHeld(new PickUpBall());
+    rightJoystickButton6.whileHeld(new ThrowBall());
 
-    leftJoystickButton1.whileHeld(new ElbowUp());
-    leftJoystickButton2.whileHeld(new ElbowDown());
+    
+
+    
+    //========================================================================================
+    //==================  Operator Controller  ===============================================
+    //========================================================================================
+
+    leftJoystickButton1.whileHeld(new ElbowDown());
+    leftJoystickButton2.whileHeld(new ElbowUp());
 
     leftJoystickButton3.whileHeld(new WristUp());
     leftJoystickButton4.whileHeld(new WristDown());
 
-    leftJoystickButton5.whileHeld(new ElevatorUp());
-    leftJoystickButton6.whileHeld(new ElevatorDown());
+    leftJoystickButton5.whileHeld(new ElevatorDown());
+    leftJoystickButton6.whileHeld(new ElevatorUp());
 
     leftJoystickButton7.whileHeld(new ClimbUp());
     leftJoystickButton8.whileHeld(new ClimbDown());
+
+    leftJoystickButton9.whileHeld(new StopWrist());
 
     // wrist up and down 
     // hatch open and close

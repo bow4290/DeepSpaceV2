@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.ADXL345_I2C;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
@@ -27,7 +29,6 @@ import frc.robot.subsystems.IntakeOutakeMotor;
 // import frc.RobotMap.subsystems.L 
 // import sun.nio.ch.Net;
 import frc.robot.subsystems.WristMotor;
-import frc.robot.subsystems.WristPID;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,7 +40,6 @@ import frc.robot.subsystems.WristPID;
 public class Robot extends TimedRobot {
   public static DriveTrain driveTrain;
   public static WristMotor wristMotor;
-  private NetworkTable nTable;
   public static OI oi;
   public static IntakeOutakeMotor intakeOutakeMotor;
   public static ElevatorMotor elevatorMotor;
@@ -56,11 +56,11 @@ public class Robot extends TimedRobot {
     elevatorMotor = new ElevatorMotor();
     climbMotor = new ClimbMotor();
     // elbowMotor = new ElbowMotor();
-    NetworkTable.globalDeleteAll();
-    nTable = NetworkTable.getTable("gyroOut");
     oi = new OI();
     //RobotMap.wristEncoder.reset();  
     // elbowMotor.testElbow();
+    UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+    UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
   }
 
   
@@ -77,20 +77,10 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     
     double gyroAngle = RobotMap.turningGyro.getAngle();
-    nTable.putNumber("Current Gyro Value", gyroAngle);
+    SmartDashboard.putNumber("Gyro Angle", gyroAngle);
     
     double potPosition = RobotMap.potInputPosition.getVoltage();
-    nTable.putNumber("PotPositon", potPosition);
-
-    double accelX = RobotMap.accel.getX();
-    double accelY = RobotMap.accel.getY();
-    double accelZ = RobotMap.accel.getZ();
-
-    nTable.putNumber("Accelerometer X", accelX);
-    nTable.putNumber("Accelerometer Y", accelY);
-    nTable.putNumber("Accelerometer Z", accelZ);
-
-    new WristUp();
+    SmartDashboard.putNumber("Pot Position", potPosition);
 
   }
 

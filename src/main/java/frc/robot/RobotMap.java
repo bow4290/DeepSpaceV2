@@ -77,9 +77,9 @@ public class RobotMap {
     elevatorMotor = new Spark(4);
     climbMotor = new Talon(5);
 
-    gearShiftSolenoid = new DoubleSolenoid(0, 1, 0);
+    gearShiftSolenoid = new DoubleSolenoid(0, 5, 4);
     hatchPanelSolenoid = new DoubleSolenoid(0, 3, 2);
-    elbowSolenoid = new DoubleSolenoid(0, 5, 4);
+    elbowSolenoid = new DoubleSolenoid(0, 1, 0);
     
     turningGyro = new ADXRS450_Gyro();
     accel = new ADXL345_I2C(I2C.Port.kOnboard, Accelerometer.Range.k4G);
