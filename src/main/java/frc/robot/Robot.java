@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.ADXL345_I2C;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -55,12 +56,9 @@ public class Robot extends TimedRobot {
     intakeOutakeMotor = new IntakeOutakeMotor();
     elevatorMotor = new ElevatorMotor();
     climbMotor = new ClimbMotor();
-    // elbowMotor = new ElbowMotor();
     oi = new OI();
-    //RobotMap.wristEncoder.reset();  
-    // elbowMotor.testElbow();
     UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
-    UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+    camera1.setVideoMode(PixelFormat.kMJPEG, 200, 150, 30);
   }
 
   

@@ -43,7 +43,7 @@ public class WristMotor extends Subsystem {
 
   public void moveWristDown(){
     // if(RobotMap.wristMotorLowLimit.get()){
-      RobotMap.wristMotor.set(1);
+      RobotMap.wristMotor.set(.55);
       // RobotMap.wristMotor.set(-maxValue*Math.abs(Robot.oi.leftJoystick.getY()));
     // }
     // else{
