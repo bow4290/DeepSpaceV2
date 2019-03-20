@@ -1,3 +1,4 @@
+
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -7,48 +8,43 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.subsystems.WristMotor;
 
 public class WristUp extends Command {
-  
   public WristUp() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    // requires(Robot.wristEncoder);
+    // requires(Robot.elbowMotor);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.wristMotor.moveWristUp();
+    RobotMap.wristSolenoid.set(Value.kForward);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    // return !RobotMap.wristMotorHighLimit.get();
-    return false;
+    return false;// wristAngle == currentWristAngle;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.wristMotor.stopWrist();
-  }
+    }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.wristMotor.stopWrist();
-    end();
   }
 }

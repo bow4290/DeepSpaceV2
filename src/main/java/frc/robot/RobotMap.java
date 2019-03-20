@@ -49,7 +49,7 @@ public class RobotMap {
   
   public static DoubleSolenoid gearShiftSolenoid;
   public static DoubleSolenoid hatchPanelSolenoid;
-  public static DoubleSolenoid elbowSolenoid;
+  public static DoubleSolenoid wristSolenoid;
 
   public static ADXRS450_Gyro turningGyro;
 
@@ -79,7 +79,7 @@ public class RobotMap {
 
     gearShiftSolenoid = new DoubleSolenoid(0, 5, 4);
     hatchPanelSolenoid = new DoubleSolenoid(0, 3, 2);
-    elbowSolenoid = new DoubleSolenoid(0, 1, 0);
+    wristSolenoid = new DoubleSolenoid(0, 1, 0);
     
     turningGyro = new ADXRS450_Gyro();
     accel = new ADXL345_I2C(I2C.Port.kOnboard, Accelerometer.Range.k4G);
