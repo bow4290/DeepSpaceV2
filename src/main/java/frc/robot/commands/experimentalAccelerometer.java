@@ -7,7 +7,7 @@
 
 package frc.robot.commands;
 
-import static org.junit.Assume.assumeNoException;
+//import static org.junit.Assume.assumeNoException;
 
 import edu.wpi.first.wpilibj.ADXL345_I2C;
 import edu.wpi.first.wpilibj.I2C;
@@ -24,9 +24,11 @@ public class experimentalAccelerometer extends Command {
   double accelerometerZ;
 
   private NetworkTable table = NetworkTable.getTable("tables");
+  private I2C randomI2c;
 
   public experimentalAccelerometer() {
-    accel = new ADXL345_I2C(I2C.Port.kOnboard, Accelerometer.Range.k4G);
+    accel = new ADXL345_I2C(I2C.Port.kOnboard, Accelerometer.Range.k2G);
+    randomI2c = new I2C(I2C.Port.kOnboard,0x1D);
   }
 
   public void experimentalAccelerometer() {
@@ -43,13 +45,14 @@ public class experimentalAccelerometer extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double accelerationX = accel.getX();
+    double accelerationX = randomI2c.read(registerAddress, count, buffer).getX();
     double accelerationY = accel.getY();
     double accelerationZ = accel.getZ();
 
     table.putNumber("accelerationX", accelerationX);
     table.putNumber("accelerationY", accelerationY);
     table.putNumber("accelerationZ", accelerationZ);
+  
 
   }
 
