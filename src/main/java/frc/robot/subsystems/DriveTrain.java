@@ -33,7 +33,7 @@ public class DriveTrain extends Subsystem {
   }
 
   public void takeJoystickInputs(XboxController rightJoystick){
-    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(rightJoystick.getY(), 0.04), -(rightJoystick.getX()), false);
+    RobotMap.driveTrainBase.arcadeDrive(speedBuffer(rightJoystick.getY(), 0.04), -(speedCurve(rightJoystick.getX(), 0.04)), false);
     // RobotMap.driveTrainBase.arcadeDrive(joystick.getY(), joystick.getX());
   }
 
@@ -62,7 +62,10 @@ public class DriveTrain extends Subsystem {
 			  oldSpeed = accel * 10 * directionForwardReverse;
 			  oldSpeed += 0.01 * speedDelta;
       } 
-			  oldSpeed += addSpeed * directionSpeedDelta;
+			else{
+        oldSpeed += addSpeed;
+      }
+      return oldSpeed * directionSpeedDelta;
     }
 
     else if (Math.abs(joy)>= linearSpeed){
@@ -91,9 +94,10 @@ public class DriveTrain extends Subsystem {
     else if (oldSpeedMagnitude < perc * 10 && newSpeedMagnitude > 0.1) {
 			oldSpeed = perc * 10 * directionForwardReverse;
 			oldSpeed += 0.01 * speedDelta;
-    } 
-			oldSpeed += addSpeed * directionSpeedDelta;
-		return oldSpeed;
+    } else {
+      oldSpeed += addSpeed;
+    }
+		return oldSpeed * directionSpeedDelta;
 	}
 
   public void driveStraight(){
