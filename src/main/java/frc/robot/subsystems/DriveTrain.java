@@ -37,6 +37,46 @@ public class DriveTrain extends Subsystem {
     // RobotMap.driveTrainBase.arcadeDrive(joystick.getY(), joystick.getX());
   }
 
+  public double speedCurve(double joy, double accel){
+    double deadband = .1;
+    double linearSpeed = .65;
+    double outputSpeed = .65;
+    double oldSpeedMagnitude = Math.abs(oldSpeed);
+    double addSpeed = oldSpeedMagnitude * accel;
+    double directionForwardReverse = Math.signum(joy);
+    double newSpeedMagnitude = Math.abs(joy);
+    double speedDelta = Math.abs(joy-oldSpeed);
+    double directionSpeedDelta = Math.signum(joy-oldSpeed);
+
+    if (Math.abs(joy) <= deadband){
+      oldSpeed = 0;
+    }
+    
+
+    else if (Math.abs(joy)>deadband && Math.abs(joy)<linearSpeed){
+
+      if (speedDelta < addSpeed + 0.01) {
+			  oldSpeed = joy;
+      }
+      else if (oldSpeedMagnitude < accel * 10 && newSpeedMagnitude > 0.1) {
+			  oldSpeed = accel * 10 * directionForwardReverse;
+			  oldSpeed += 0.01 * speedDelta;
+      } 
+			  oldSpeed += addSpeed * directionSpeedDelta;
+    }
+
+    else if (Math.abs(joy)>= linearSpeed){
+      double deltaX = 1-linearSpeed;
+      double deltaY = 1-outputSpeed;
+      double slope = (deltaY/deltaX);
+      oldSpeed = joy*slope;
+    }
+
+    return oldSpeed;
+  }
+
+
+
    public double speedBuffer(double joy, double perc) {
     double oldSpeedMagnitude = Math.abs(oldSpeed);
     double addSpeed = oldSpeedMagnitude * perc;
@@ -52,9 +92,7 @@ public class DriveTrain extends Subsystem {
 			oldSpeed = perc * 10 * directionForwardReverse;
 			oldSpeed += 0.01 * speedDelta;
     } 
-    else {
 			oldSpeed += addSpeed * directionSpeedDelta;
-		}
 		return oldSpeed;
 	}
 
