@@ -38,6 +38,7 @@ public class DriveTrain extends Subsystem {
   }
 
    public double speedBuffer(double joy, double perc) {
+     joy = -joy;
     double oldSpeedMagnitude = Math.abs(oldSpeed);
     double addSpeed = oldSpeedMagnitude * perc;
     double directionForwardReverse = Math.signum(joy);
@@ -52,10 +53,8 @@ public class DriveTrain extends Subsystem {
 			oldSpeed = perc * 10 * directionForwardReverse;
 			oldSpeed += 0.01 * speedDelta;
     } 
-    else {
 			oldSpeed += addSpeed * directionSpeedDelta;
-		}
-		return oldSpeed;
+		return -oldSpeed;
 	}
 
   public void driveStraight(){
