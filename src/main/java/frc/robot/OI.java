@@ -54,7 +54,7 @@ public class OI {
     leftJoystickButton6 = new JoystickButton(leftJoystick, 6);
     leftJoystickButton7 = new JoystickButton(leftJoystick, 7);
     leftJoystickButton8 = new JoystickButton(leftJoystick, 8);
-    leftJoystickButton9 = new JoystickButton(leftJoystick,9);
+    leftJoystickButton9 = new JoystickButton(leftJoystick, 9);
       
     
     
@@ -73,8 +73,11 @@ public class OI {
     rightJoystickButton3.whileHeld(new ShiftUp());
     rightJoystickButton4.whileHeld(new ShiftDown());
     
-    rightJoystickButton5.whileHeld(new PickUpBall());
-    rightJoystickButton6.whileHeld(new ThrowBall());
+    // rightJoystickButton5.whileHeld(new PickUpBall());
+    // rightJoystickButton6.whileHeld(new ThrowBall());
+
+    leftJoystickButton7.whileHeld(new StopWrist());
+
 
     
 
@@ -83,11 +86,11 @@ public class OI {
     //==================  Operator Controller  ===============================================
     //========================================================================================
 
-    // leftJoystickButton1.whileHeld(new ElbowDown());
-    // leftJoystickButton2.whileHeld(new ElbowUp());
+    leftJoystickButton1.whileHeld(new WristDown());
+    leftJoystickButton2.whileHeld(new WristUp());
 
-    leftJoystickButton3.whileHeld(new WristUp());
-    leftJoystickButton4.whileHeld(new WristDown());
+    leftJoystickButton3.whileHeld(new PickUpBall());
+    leftJoystickButton4.whileHeld(new ThrowBall());
 
     leftJoystickButton5.whileHeld(new ElevatorDown());
     leftJoystickButton6.whileHeld(new ElevatorUp());
@@ -95,7 +98,7 @@ public class OI {
     leftJoystickButton7.whileHeld(new ClimbUp());
     leftJoystickButton8.whileHeld(new ClimbDown());
 
-    leftJoystickButton9.whileHeld(new StopWrist());
+    // leftJoystickButton9.whileHeld(new StopWrist());
 
     // wrist up and down 
     // hatch open and close

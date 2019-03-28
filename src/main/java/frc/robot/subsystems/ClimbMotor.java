@@ -29,11 +29,11 @@ public class ClimbMotor extends Subsystem {
   }
 
   public void ClimbUp(){
-    RobotMap.climbMotor.set(.4);
+    RobotMap.climbMotor.set(1);
   }
 
   public void ClimbDown(){
-    RobotMap.climbMotor.set(-.4);
+    RobotMap.climbMotor.set(-1);
   }
 
   public void stopClimb(){
