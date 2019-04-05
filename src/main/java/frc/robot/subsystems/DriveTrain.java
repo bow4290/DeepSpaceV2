@@ -24,7 +24,8 @@ public class DriveTrain extends Subsystem {
 
   private double oldValue;
   private static double speedReductionFactor = .999;
-  private double oldSpeed = 0.0;
+  private double oldSpeedX = 0.0;
+  private double oldSpeedY = 0.0;
 
   @Override
   public void initDefaultCommand() {
@@ -41,63 +42,63 @@ public class DriveTrain extends Subsystem {
     double deadband = .1;
     double linearSpeed = .65;
     double outputSpeed = .65;
-    double oldSpeedMagnitude = Math.abs(oldSpeed);
+    double oldSpeedMagnitude = Math.abs(oldSpeedX);
     double addSpeed = oldSpeedMagnitude * accel;
     double directionForwardReverse = Math.signum(joy);
     double newSpeedMagnitude = Math.abs(joy);
-    double speedDelta = Math.abs(joy-oldSpeed);
-    double directionSpeedDelta = Math.signum(joy-oldSpeed);
+    double speedDelta = Math.abs(joy-oldSpeedX);
+    double directionSpeedDelta = Math.signum(joy-oldSpeedX);
 
     if (Math.abs(joy) <= deadband){
-      oldSpeed = 0;
+      oldSpeedX = 0;
     }
     
 
     else if (Math.abs(joy)>deadband && Math.abs(joy)<linearSpeed){
 
       if (speedDelta < addSpeed + 0.01) {
-			  oldSpeed = joy;
+			  oldSpeedX = joy;
       }
       else if (oldSpeedMagnitude < accel * 10 && newSpeedMagnitude > 0.1) {
-			  oldSpeed = accel * 10 * directionForwardReverse;
-			  oldSpeed += 0.01 * speedDelta;
+			  oldSpeedX = accel * 10 * directionForwardReverse;
+			  oldSpeedX += 0.01 * speedDelta;
       } 
 			else{
-        oldSpeed += addSpeed;
+        oldSpeedX += addSpeed;
       }
-      return oldSpeed * directionSpeedDelta;
+      return oldSpeedX * directionSpeedDelta;
     }
 
     else if (Math.abs(joy)>= linearSpeed){
       double deltaX = 1-linearSpeed;
       double deltaY = 1-outputSpeed;
       double slope = (deltaY/deltaX);
-      oldSpeed = joy*slope;
+      oldSpeedX = joy*slope;
     }
 
-    return oldSpeed;
+    return oldSpeedX;
   }
 
 
 
    public double speedBuffer(double joy, double perc) {
-    double oldSpeedMagnitude = Math.abs(oldSpeed);
+    double oldSpeedMagnitude = Math.abs(oldSpeedY);
     double addSpeed = oldSpeedMagnitude * perc;
     double directionForwardReverse = Math.signum(joy);
     double newSpeedMagnitude = Math.abs(joy);
-    double speedDelta = Math.abs(joy-oldSpeed);
-    double directionSpeedDelta = Math.signum(joy-oldSpeed);
+    double speedDelta = Math.abs(joy-oldSpeedY);
+    double directionSpeedDelta = Math.signum(joy-oldSpeedY);
 
 		if (speedDelta < addSpeed + 0.01) {
-			oldSpeed = joy;
+			oldSpeedY = joy;
     }
     else if (oldSpeedMagnitude < perc * 10 && newSpeedMagnitude > 0.1) {
-			oldSpeed = perc * 10 * directionForwardReverse;
-			oldSpeed += 0.01 * speedDelta;
+			oldSpeedY = perc * 10 * directionForwardReverse;
+			oldSpeedY += 0.01 * speedDelta;
     } else {
-      oldSpeed += addSpeed;
+      oldSpeedY += addSpeed;
     }
-		return oldSpeed * directionSpeedDelta;
+		return oldSpeedY * directionSpeedDelta;
 	}
 
   public void driveStraight(){
