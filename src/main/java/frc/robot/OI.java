@@ -67,16 +67,17 @@ public class OI {
     //========================================================================================
     //==================  Driver Controller  =================================================
     //========================================================================================
-    rightJoystickButton1.whileHeld(new HatchOpen());
+    rightJoystickButton1.whileActive(new HatchOpen());
+    rightJoystickButton1.whenInactive(new HatchAutoClose());
     rightJoystickButton2.whileHeld(new HatchClose());
 
     rightJoystickButton3.whileHeld(new ShiftUp());
     rightJoystickButton4.whileHeld(new ShiftDown());
     
-    // rightJoystickButton5.whileHeld(new PickUpBall());
-    // rightJoystickButton6.whileHeld(new ThrowBall());
+    rightJoystickButton5.whileHeld(new PickUpBall());
+    rightJoystickButton6.whileHeld(new ThrowBall());
 
-    leftJoystickButton7.whileHeld(new StopWrist());
+    // leftJoystickButton7.whileHeld(new StopWrist());
 
 
     
@@ -89,8 +90,8 @@ public class OI {
     leftJoystickButton1.whileHeld(new WristDown());
     leftJoystickButton2.whileHeld(new WristUp());
 
-    leftJoystickButton3.whileHeld(new PickUpBall());
-    leftJoystickButton4.whileHeld(new ThrowBall());
+    // leftJoystickButton3.whileHeld(new PickUpBall());
+    // leftJoystickButton4.whileHeld(new ThrowBall());
 
     leftJoystickButton5.whileHeld(new ElevatorDown());
     leftJoystickButton6.whileHeld(new ElevatorUp());

@@ -59,6 +59,10 @@ public class RobotMap {
   public static AnalogInput potInputPosition;
   public static AnalogPotentiometer potentiometer;
 
+  public static DigitalInput rightHatch;
+  public static DigitalInput leftHatch;
+  public static DoubleSolenoid newHatchSolenoid;
+
   public static void init(){
     driveTrainLeftEncoder = new Encoder(1,2);
     driveTrainRightEncoder = new Encoder(3,4);
@@ -80,11 +84,15 @@ public class RobotMap {
     gearShiftSolenoid = new DoubleSolenoid(0, 5, 4);
     hatchPanelSolenoid = new DoubleSolenoid(0, 3, 2);
     wristSolenoid = new DoubleSolenoid(0, 1, 0);
+    newHatchSolenoid = new DoubleSolenoid(0, 6, 7);
     
     turningGyro = new ADXRS450_Gyro();
     accel = new ADXL345_I2C(I2C.Port.kOnboard, Accelerometer.Range.k4G);
 
     potInputPosition = new AnalogInput(3);
     potentiometer = new AnalogPotentiometer(potInputPosition);
+
+    leftHatch = new DigitalInput(8);
+    rightHatch = new DigitalInput(9);
   }
 }
