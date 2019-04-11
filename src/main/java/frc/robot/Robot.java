@@ -80,6 +80,12 @@ public class Robot extends TimedRobot {
     double potPosition = RobotMap.potInputPosition.getVoltage();
     SmartDashboard.putNumber("Pot Position", potPosition);
 
+    boolean rightDIO = RobotMap.rightHatch.get();
+    SmartDashboard.putBoolean("Right DIO", rightDIO);
+
+    boolean leftDIO = RobotMap.leftHatch.get();
+    SmartDashboard.putBoolean("Left DIO", leftDIO);
+
   }
 
   @Override

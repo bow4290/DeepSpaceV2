@@ -25,7 +25,7 @@ public class HatchOpen extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    RobotMap.newHatchSolenoid.set(Value.kForward);
+    RobotMap.hatchPanelSolenoid.set(Value.kForward);
   }
 
   // Make this return true when this Command no longer needs to run execute()

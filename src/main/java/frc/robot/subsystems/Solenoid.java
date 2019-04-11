@@ -35,10 +35,10 @@ public class Solenoid extends Subsystem {
     RobotMap.gearShiftSolenoid.set(Value.kReverse);
   }
   public void hatchOpen() {
-    RobotMap.newHatchSolenoid.set(Value.kForward);
+    RobotMap.hatchPanelSolenoid.set(Value.kForward);
   }
   public void hatchClosed() {
-    RobotMap.newHatchSolenoid.set(Value.kReverse);
+    RobotMap.hatchPanelSolenoid.set(Value.kReverse);
   }
   public void elbowUp() {
     RobotMap.wristSolenoid.set(Value.kForward);

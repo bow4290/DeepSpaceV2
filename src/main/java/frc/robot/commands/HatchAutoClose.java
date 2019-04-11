@@ -26,8 +26,8 @@ public class HatchAutoClose extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (RobotMap.leftHatch.get() == true && RobotMap.rightHatch.get() == true){
-      RobotMap.newHatchSolenoid.set(Value.kReverse);
+    if (RobotMap.leftHatch.get() == false && RobotMap.rightHatch.get() == false){
+      RobotMap.hatchPanelSolenoid.set(Value.kReverse);
     }
     else{
     }
